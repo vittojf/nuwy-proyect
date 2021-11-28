@@ -1,0 +1,69 @@
+
+.section-step{
+    width: 100% ;
+}
+.container-step  {
+
+
+    
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.section-body-step {
+    padding: 5rem 0 6rem 0;
+}
+
+.bg-section-step{
+    background-color: #ECEDF1;
+    color:#29354B
+}
+
+.bg-text-mark-section-step{
+color:#5163A3;
+}
+
+.mx-42{
+    margin-left: 42px;
+    margin-right: 42px;
+}
+
+.list-circle{
+
+
+width: 35px;
+height: 35px;
+
+
+background: #29354B;
+color: white;
+}
+
+.fs-13px{
+    font-size: 13px;
+}
+
+.text-height{
+    line-height: 15.23px !important;
+}
+
+.ms-12px{
+    
+    margin-left: 12px;
+}
+
+.bg-step-list{
+    color: #29354B;
+
+}
+
+.mx-3-5 {
+    
+    margin-left: 31px;
+    margin-right: 32px;
+}
+
+.forAnimation{
+    overflow-x: hidden !important; 
+
+}
