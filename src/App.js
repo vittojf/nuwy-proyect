@@ -9,12 +9,14 @@ function App() {
   return (
     <React.Fragment>
 
+<div className="bg">
     <Navbar/>
     <CardForm/>
     <SectionStep/>
     <SectionBenefits/>
     <SectionFooter/>
       
+</div>
     </React.Fragment>
   );
 }

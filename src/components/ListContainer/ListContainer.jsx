@@ -5,7 +5,7 @@ function ListContainer({items,className,type}) {
         {
             type==='itemIcon'&&
             items.map((el,key)=>{return(<li key={key} className={el.className}>
-               <a className="mx-2" href="#"> <img src={el.url} alt={el.alt} className={el.imgClassName}/></a>
+               <a className="mx-2" href="#/action-2"> <img src={el.url} alt={el.alt} className={el.imgClassName}/></a>
             </li>)})
 
         }

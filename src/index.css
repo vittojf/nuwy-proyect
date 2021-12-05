@@ -7,7 +7,25 @@ body{
     font-family: 'Roboto', sans-serif !important;
 }
 
+*{
+    font-family: 'Roboto', sans-serif !important;
+    
+
+}
+a{
+   text-decoration: none !important;
+
+}
+
 html{
     min-height: 100%;
     position: relative;
 }
+
+body.modal-open .bg{
+    filter:blur(3px);
+    position: absolute;
+    
+
+}
+

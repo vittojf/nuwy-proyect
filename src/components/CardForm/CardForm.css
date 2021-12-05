@@ -39,7 +39,7 @@ font-weight: 300;
   border-radius: 8px 0 0 8px !important;
   font-size: 25px !important;
   padding: 6px 0 5px 20px !important;
-  height: 40px !important;
+  height: 50px !important;
   color:#6A6E78 !important;
   font-weight: 500 !important;
   
@@ -50,14 +50,80 @@ font-weight: 300;
 
 .dropdown-nuwy {
 
-  height: 40px !important;
-
+  height: 50px !important;
+  transition: all 250ms !important;
   width: 96px !important;
   background: #dedede !important;
   border: 1px solid #ffffff !important;
   box-sizing: border-box !important;
   border-radius: 0px 8px 8px 0px !important;
+
 }
+.dropdown-nuwy:active{
+border-color: transparent !important;
+}
+.dropdown-nuwy-menu{
+  border-radius: 8px !important;
+  border-style: none !important;
+
+  background-color: white !important;
+  max-width: 141px !important;
+  min-width: 141px !important;
+  height: auto;
+
+}
+.fs-8{
+  font-size: 12px;
+}
+
+
+
+.me-15{
+  margin-right: 6.4rem;
+}
+.icorrect img {
+margin: 0;
+}
+.spanIconScroll{
+  font-size: 13px;
+  font-weight: 700;
+}
+.textIconScroll{
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/*
+
+
+::-webkit-scrollbar-thumb {
+  background: #5163A3 !important;
+    border-radius: 4px;
+    
+}*/
+.simplebar-track{
+  background: #ECECEC;
+  width: 8px !important;
+ margin-right: 1px;
+ border-radius: 8px !important;
+
+}
+
+
+.simplebar-scrollbar.simplebar-visible:before {
+  /* When hovered, remove all transitions from drag handle */
+  opacity: 0 !important;
+  transition: opacity 0s linear !important;
+}
+.simplebar-scrollbar {
+  background-color: #5163A3 !important;
+  border-radius: 8px !important;
+  width: 8px;
+  /*height: 49px !important;*/
+  margin: center;
+
+}
+
 
 .roboto-bold{
 font-weight: 700;
@@ -108,4 +174,46 @@ font-weight: 700;
 
 .title-size{
   font-size: 20px !important;
+}
+
+.dropdown-nuwy-active{
+width: 142px !important;
+transition: all 250ms !important ;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(3.5rem);
+    opacity: 1;
+  }
+
+  0% {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+}
+
+
+
+
+.slideIn {
+
+  -webkit-animation-name:slideIn ;
+  animation-name: slideIn ;
+}
+.animate {
+  animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}  
+
+
+.dropdown-toggle::after {
+  display: none !important;
 }

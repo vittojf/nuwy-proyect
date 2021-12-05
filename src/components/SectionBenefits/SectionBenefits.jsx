@@ -84,9 +84,10 @@ function SectionBenefits() {
       <h2 className="text-weight-normal">Envía sin comisiones, rápido y sin atados</h2>
 
 </div>
-      <button type="button" class="btn btn-send-nuwy">Enviar Dinero</button>
+      <button type="button" className="btn btn-send-nuwy">Enviar Dinero</button>
 
 </div>
+
     </section>
   );
 }
