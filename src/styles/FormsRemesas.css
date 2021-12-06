@@ -1,0 +1,20 @@
+.card-remesas{
+    background-color: #5163A3;
+}
+
+.mt-80{
+    margin-top: 74px;
+}
+
+.card-remesas{
+    max-width: max-content !important;
+}
+.card-remesas p,span{
+    font-size: 11px;
+}
+.card-remesas p {
+    line-height: 13px;
+}
+.card-remesas span{
+    font-weight: 700;
+}

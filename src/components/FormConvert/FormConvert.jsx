@@ -56,7 +56,7 @@ function FormConvert() {
               className="form-control form-control-nuwy  "
               aria-label="Text input with dropdown button"
               value="$20.000"
-              disabled
+         
             />
 
             <button className=" dropdown-nuwy " disabled type="button">

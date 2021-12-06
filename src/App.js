@@ -1,22 +1,17 @@
-import React from 'react'
-import CardForm from './components/CardForm/CardForm';
-import Navbar from './components/Navbar/Navbar'
-import './App.css'
-import SectionStep from './components/SectionStep/SectionStep';
-import SectionBenefits from './components/SectionBenefits/SectionBenefits';
-import SectionFooter from './components/SectionFooter/SectionFooter';
+import React from "react";
+import Navbar from "./components/Navbar/Navbar";
+import SectionFooter from "./components/SectionFooter/SectionFooter";
+import { Outlet } from "react-router";
+import "./App.css";
+
 function App() {
   return (
     <React.Fragment>
-
-<div className="bg">
-    <Navbar/>
-    <CardForm/>
-    <SectionStep/>
-    <SectionBenefits/>
-    <SectionFooter/>
-      
-</div>
+      <div className="bg">
+        <Navbar />
+        <Outlet />
+        <SectionFooter />
+      </div>
     </React.Fragment>
   );
 }

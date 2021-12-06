@@ -16,7 +16,7 @@ function CardForm() {
 
 
         
-          <Card className="bg-card-nuwy text-white">
+          <Card className="bg-card-nuwy text-white shadow-card-nuwy">
             <FormConvert/>
 
         </Card>
