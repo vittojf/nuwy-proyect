@@ -6,19 +6,31 @@ function TopNambedInput({ inputClassName, labelClassName, id, type,label,spanTex
       <label className={`labelForm ${labelClassName}`} htmlFor={id}>
         {label} <span className={spanClassName}>{spanText}</span>
       </label>
-      <label htmlFor={id} className={styleClassInputLabel}>
+      
+      {
+        styleClassInputLabel? <label htmlFor={id} className={styleClassInputLabel}>
         <div className={styleClassInputLabel&& 'mt-2'}> 
 
       {imageLabel&&<img src={imageLabel} alt="imageLabel"/>}
       {textInputLabelStyle&&<p><b style={{color:'#6AA6FF'}}>Sube tu capture</b>  {textInputLabelStyle}</p>}
         </div>
-      <input
+        <input
         type={type}
         id={id}
         className={inputClassName}
         required={required}
         />
         </label>
+        :
+        <input
+        type={type}
+        id={id}
+        className={inputClassName}
+        required={required}
+        />
+      }
+     
+   
     </>
   );
 }

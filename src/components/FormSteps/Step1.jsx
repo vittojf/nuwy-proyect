@@ -12,15 +12,15 @@ function FormStep1({children,steps,setSteps}) {
   const inputGroup = [
     {
       label: "Nombre y Apellido",
-      labelClass: "text-white",
-      inputClass: " mt-1 form-step-1",
+      labelClass: "text-white ",
+      inputClass: " mt-1 form-step-1 ",
       id: "name",
       required:true
     },
     {
       label: "RUT",
       labelClass: "text-white",
-      inputClass: "mt-1 form-step-1",
+      inputClass: "mt-1 form-step-1 ",
       id: "rut",
       textSpan: "Con punto y guión",
       spanClass: "ms-2 spanText",
@@ -29,8 +29,8 @@ function FormStep1({children,steps,setSteps}) {
     },
     {
       label: "Correo Electronico",
-      labelClass: "text-white",
-      inputClass: " mt-1 form-step-1",
+      labelClass: "text-white ",
+      inputClass: " mt-1 form-step-1 ",
       id: "email",
       required:true
     },
