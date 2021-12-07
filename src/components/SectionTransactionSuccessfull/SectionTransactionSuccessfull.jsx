@@ -8,7 +8,7 @@ function SectionTransactionSuccessfull() {
   return (
     <>
       <SectionsNuwy
-        className="mt-4-5 mx-auto"
+        className="mt-4-5 mx-auto "
         title="Nuwy"
         titleClassName="mt-3 text-white text-center mb-4 "
         titleClassNameText="fs-1"
@@ -21,16 +21,19 @@ function SectionTransactionSuccessfull() {
           </div>
         </div>
         <h4 className="text-center text-white my-4">Transacción exitosa</h4>
-        <div className="d-flex justify-content-center text-white ">
-          <div className="text-center mount-nuwy">
-            <p className="mx-5 m-0">Monto transferido</p>
+        <div className="">
+
+        <div className="d-flex text-white justify-content-center">
+          <div className="text-center mount-nuwy ">
+            <p className=" m-0">Monto transferido</p>
             <h3>$20.000 CLP</h3>
           </div>
-          <img src="/svg/rowRightCheck.svg" alt="" />
+          <img src="/svg/rowRightCheck.svg" className="mx-3"  alt="" />
           <div className="text-center mount-nuwy">
-            <p className="mx-5 m-0">Receptor recibirá</p>
+              <p className=" m-0">Receptor recibirá</p>
             <h3>$91.456 COP</h3>
           </div>
+        </div>
         </div>
         <div className="d-flex justify-content-center my-4 text-white mx-4">
           <div className="   list-circle rounded-circle position-relative  flex-shrink-0 bg-step-3-form ">
@@ -45,8 +48,8 @@ function SectionTransactionSuccessfull() {
               correo
             </p>
           </div>
-        </div>
 
+        </div>
         <Card className="card-resume-step3 mx-auto text-center ">
           <div className="mx-3">
             <h6 className="mt-3">Datos cuenta bancaria Nuwy</h6>
