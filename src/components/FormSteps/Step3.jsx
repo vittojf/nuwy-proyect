@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonGroup, Card, ToggleButton } from "react-bootstrap";
 import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
@@ -29,11 +29,16 @@ function Step3({ children, steps, setSteps }) {
       id: "name",
       type: "file",
       required: true,
-      styleClassInputLabel:'label-file d-flex justify-content-center  flex-wrap text-center px-5 mb-4 mt-1',
-      textInputLabelStyle:'debe ser JPG, PNG o PDF y no pesar mas de 10MB',
-      imageLabel:'/svg/captureScreen.svg'
+      styleClassInputLabel:
+        "label-file d-flex justify-content-center  flex-wrap text-center px-5 mb-4 mt-1",
+      textInputLabelStyle: "debe ser JPG, PNG o PDF y no pesar mas de 10MB",
+      imageLabel: "/svg/captureScreen.svg",
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

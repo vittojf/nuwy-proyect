@@ -9,7 +9,7 @@ function CardForm() {
     <>
       <section className="mx-16 mt-100 mb-card">
 
-          <div className="text-white text-center mx-14 ">
+          <div className="text-white text-center mx-14 " id="card-section">
               <h3 className="mb-19 roboto-bold title-size">Quidam alii sunt, et non est in nostra potestate. Quae</h3>
               <p className="text-nuwy "> et non est Quidam alii sunt, et non est in nostra potestate. Quae omnia inpotestat</p>
           </div>

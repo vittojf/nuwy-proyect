@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Dropdown } from "react-bootstrap";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
+import './FormContent.css'
 import ConfirmNuwy from "../ConfirmNuwy/ConfirmNuwy";
 
 function useOutsideAlerter(ref, setDropdown) {
@@ -24,11 +25,24 @@ function useOutsideAlerter(ref, setDropdown) {
 }
 function FormConvert() {
   const [dropwdown, setDropwdown] = useState(false);
+  const [dataSendMoney, setDataSendMoney] = useState({
+  });
 
   const handleClassChange = (e) => {
     console.log(e);
     return setDropwdown(!dropwdown);
   };
+
+  const handleOnChange=(v ,input)=>{
+switch (input) {
+  case 'envio':
+    setDataSendMoney({...dataSendMoney,emisor:v})
+    break;
+
+  default:
+    break;
+}
+  }
 
   const popperConfig = {
     placement: "bottom-end",
@@ -40,6 +54,12 @@ function FormConvert() {
     ],
   };
 
+  const formatoNumber= (number) => {
+    const exp = /(\d)(?=(\d{80})+(?!\d))/g;
+    const rep = '$1,';
+    return number.toString().replace(exp,rep);
+  }
+  
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setDropwdown);
   return (
@@ -49,14 +69,20 @@ function FormConvert() {
           <label className="labelForm" htmlFor="sendMoney">
             Tú envías
           </label>
-          <div className="input-group  mb-2">
+          <div className="input-group  mb-2 position-relative">
+     <div className="position-absolute top-50 start-0 translate-middle-y ms-3 spanMoneyIcon">
+
+
+    <span class=" icon-money">$</span>
+      
+       </div> 
             <input
               id="sendMoney"
-              type="text"
-              className="form-control form-control-nuwy  "
+              type="number"
+              value={dataSendMoney["emisor"]? formatoNumber(dataSendMoney["emisor"]):''}
+              className="form-control form-control-nuwy "
               aria-label="Text input with dropdown button"
-              value="$20.000"
-         
+              onChange={(e)=>handleOnChange(e.target.value,'envio')}
             />
 
             <button className=" dropdown-nuwy " disabled type="button">
@@ -71,16 +97,24 @@ function FormConvert() {
           <label className="labelForm" htmlFor="getMoney">
             El receptor recibe
           </label>
-          <div className="input-group mb-2  ">
+          <div className="input-group mb-2  position-relative">
+          <div className="position-absolute top-50 start-0 translate-middle-y ms-3 spanMoneyIcon">
+
+
+<span class=" icon-money">$</span>
+  
+   </div> 
             <input
               type="number"
+              value="20000"
               id="getMoney"
               className="form-control form-control-nuwy   "
               aria-label="Text input with dropdown button"
+              disabled
             />
             <Dropdown onClick={handleClassChange} ref={wrapperRef}>
               <Dropdown.Toggle
-                className={` dropdown-nuwy  bg-btn-nuwy ${
+                className={` dropdown-nuwy  bg-btn-nuwy  ${
                   dropwdown ? "dropdown-nuwy-active" : ""
                 }`}
                 id="dropdown-basic"
@@ -111,97 +145,102 @@ function FormConvert() {
                 popperConfig={popperConfig}
                 align="end"
                 className=" animate slideIn dropdown-nuwy-menu  "
-
               >
                 <SimpleBarReact
-                  style={{ maxHeight:'160px'}}
+                  style={{ maxHeight: "160px" }}
                   scrollbarMaxSize="49"
                   forceVisible="y"
                   autoHide={true}
                   overflow-x="hidden"
                 >
-      
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
-                  </Dropdown.Item>
-
-                  <Dropdown.Item href="#/action-2" className="textIconScroll">
-                    <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
-                    </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-2" className="textIconScroll">
                     <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
                     </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
-                  </Dropdown.Item>  <Dropdown.Item href="#/action-2" className="textIconScroll">
-                    <span className="spanIconScroll ">
-                      <img src={`/svg/colombia.svg`} alt="banderaChile" className="me-1" />
-                    COP
-                    </span>
-                    <span className="ms-1">
-
-                    Colombia
-                    </span>
+                    <span className="ms-1">Colombia</span>
                   </Dropdown.Item>
-                  
+                  <Dropdown.Item href="#/action-2" className="textIconScroll">
+                    <span className="spanIconScroll ">
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
+                    </span>
+                    <span className="ms-1">Colombia</span>
+                  </Dropdown.Item>{" "}
+                  <Dropdown.Item href="#/action-2" className="textIconScroll">
+                    <span className="spanIconScroll ">
+                      <img
+                        src={`/svg/colombia.svg`}
+                        alt="banderaChile"
+                        className="me-1"
+                      />
+                      COP
+                    </span>
+                    <span className="ms-1">Colombia</span>
+                  </Dropdown.Item>
                 </SimpleBarReact>
               </Dropdown.Menu>
             </Dropdown>
@@ -211,21 +250,13 @@ function FormConvert() {
           </span>
         </article>
 
-        <ConfirmNuwy/>
+        <ConfirmNuwy />
         <div className="d-flex w-100 my-3 mt-4 justify-content-center align-items-center ">
-      <span>
-        <img src="/svg/lock.svg" alt="banderaChile" className="me-1" />
+          <span>
+            <img src="/svg/lock.svg" alt="banderaChile" className="me-1" />
+          </span>
 
-      </span>
-
-      
-           <span className="fs-8 ms-2 mt-1">
-
-           Esta es una plataforma segura
-           </span>
-         
-      
-
+          <span className="fs-8 ms-2 mt-1">Esta es una plataforma segura</span>
         </div>
       </section>
     </>

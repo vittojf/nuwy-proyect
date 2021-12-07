@@ -19,6 +19,7 @@ function TopNambedInput({ inputClassName, labelClassName, id, type,label,spanTex
         id={id}
         className={inputClassName}
         required={required}
+        accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
         />
         </label>
         :

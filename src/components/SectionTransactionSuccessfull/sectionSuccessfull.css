@@ -1,0 +1,23 @@
+.checkSection{
+    background-color: #5DAD1F;
+    width: 121px;
+    height: 121px;
+}
+
+.mount-nuwy p{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.mount-nuwy h3{
+    font-size: 20px;
+    color: #81D858    ;
+}
+
+.text-body-contact-alert{
+    font-size: 11px !important;
+}
+
+.text-body-contact-alert b{
+    color: #5DAD1F ;
+}

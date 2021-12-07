@@ -1,0 +1,25 @@
+.title-acordion{
+    font-weight: 400 !important;
+}
+
+.text-title-nuwy{
+    font-size: 18px;
+    color: white;
+    font-weight: 400;
+}
+
+.label-text{
+    font-size: 13px !important;
+}
+
+.textarea-mensaje{
+    width: 100%;
+    border-style: none;
+    border-radius: 8px;
+    height: 100px ;
+    resize: none;
+}
+
+.form-none{
+    border-style: none;
+}

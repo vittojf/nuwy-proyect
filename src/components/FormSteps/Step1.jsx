@@ -44,7 +44,7 @@ function FormStep1({children,steps,setSteps}) {
              setSteps={setSteps}
         inputGroup={inputGroup}
         numberStep="1"
-        classButton="mt-4-5"
+        classButton="mt-4-5 mb-5"
         textStep=" Por seguridad te pediremos algunos datos para continuar con tu
                 envío"
         titleStep="Ingresa tus datos"

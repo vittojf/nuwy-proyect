@@ -43,7 +43,7 @@ function SectionFooter() {
     }
   return (
     <footer className="bg-footer container-footer shadow-xl pb-4-5 ">
-      <section className="mt-100   py-5   pb-10 ">
+      <section className="  py-5   pb-10 ">
           
         <h1 className="text-white mb-3">Nuwy</h1>
         <div className="row row-cols-1 row-cols-lg-4 ">

@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import "./SectionBenefits.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 function SectionBenefits() {
   useEffect(() => {
@@ -84,7 +85,7 @@ function SectionBenefits() {
       <h2 className="text-weight-normal">Envía sin comisiones, rápido y sin atados</h2>
 
 </div>
-      <button type="button" className="btn btn-send-nuwy">Enviar Dinero</button>
+      <Link to="/" className="btn btn-send-nuwy">Enviar Dinero</Link>
 
 </div>
 

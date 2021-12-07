@@ -56,7 +56,7 @@ function Step2({children,steps,setSteps}) {
       <FormStep
         inputGroup={inputGroup}
         numberStep="2"
-     classButton={"mt-2"}
+     classButton={"mt-2 mb-5"}
         steps={steps}
         setSteps={setSteps}
         textStep=" Ingresa los datos personales y bancarios de la persona que recibirá el dinero, asegurate que no hayan errores"
@@ -79,7 +79,7 @@ function Step2({children,steps,setSteps}) {
         <div className="d-flex justify-content-between checkbox-nuwy ">
           <label
             htmlFor="ahorro"
-            className={`btn btn-nuwy-step ${radioValue === "1" && "active"}`}
+            className={`btn btn-nuwy-step ${radioValue === "1" && "actives"}`}
           >
             Ahorro
           </label>
@@ -94,7 +94,7 @@ function Step2({children,steps,setSteps}) {
 
           <label
             htmlFor="corriente"
-            className={`btn btn-nuwy-step ${radioValue === "2" && "active"}`}
+            className={`btn btn-nuwy-step ${radioValue === "2" && "actives"}`}
           >
             Corriente
           </label>
@@ -109,7 +109,7 @@ function Step2({children,steps,setSteps}) {
 
           <label
             htmlFor="especial"
-            className={`btn btn-nuwy-step ${radioValue === "3" && "active"}`}
+            className={`btn btn-nuwy-step ${radioValue === "3" && "actives"}`}
           >
             Especial
           </label>

@@ -9,7 +9,7 @@ body{
 
 *{
     font-family: 'Roboto', sans-serif !important;
-    
+    scroll-behavior: smooth;
 
 }
 a{

@@ -64,23 +64,38 @@ function FormStep({
               );
             })}
             {ubicationChildren === "inside-form" && children}
-            <button
+
+            {steps===3 ?
+            <Link
+            className={`btn btn-nuwy-steps  ${classButton}`}
+              to="/successfullTransacction"
+     
+          >
+            Continuar
+          </Link> : 
+              <button
               className={`btn btn-nuwy-steps  ${classButton}`}
               type="submit"
               onClick={() => setSteps(steps + 1)}
             >
               Continuar
             </button>
+          }
+        
+
+
             {steps === 3 && (
               <>
                 <Link
-                  to="/"
+                  to={{
+                   pathname: "/",
+                  }}
                   className="text-white btn btn-cancel-step mt-3 "
                   onClick={format}
                 >
                   Cancelar y volver
                 </Link>
-                <div className="d-flex w-100  mt-4 justify-content-center align-items-center ">
+                <div className="d-flex w-100  mt-4 justify-content-center align-items-center mb-5 ">
                   <span>
                     <img
                       src="/svg/lock.svg"
