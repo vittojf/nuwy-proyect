@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import FormContext, { DataContext } from "../../Context/dataContext";
 import SectionFooter from "../SectionFooter/SectionFooter";
 import SectionsNuwy from "../Sections/Sections";
 import "./sectionSuccessfull.css";
 function SectionTransactionSuccessfull() {
+  const location = useLocation();
+  const from = location.state;
+const {dataSendMoney,rate,dataBody} = from
+
   return (
     <>
+    <DataContext>
+
       <SectionsNuwy
         className="mt-4-5 mx-auto "
         title="Nuwy"
@@ -26,12 +33,12 @@ function SectionTransactionSuccessfull() {
         <div className="d-flex text-white justify-content-center">
           <div className="text-center mount-nuwy ">
             <p className=" m-0">Monto transferido</p>
-            <h3>$20.000 CLP</h3>
+            <h3>${dataSendMoney?.emisor.value} CLP</h3>
           </div>
           <img src="/svg/rowRightCheck.svg" className="mx-3"  alt="" />
           <div className="text-center mount-nuwy">
               <p className=" m-0">Receptor recibirá</p>
-            <h3>$91.456 COP</h3>
+            <h3>${dataSendMoney?.receptor.value} {dataSendMoney?.receptor.country}</h3>
           </div>
         </div>
         </div>
@@ -52,18 +59,18 @@ function SectionTransactionSuccessfull() {
         </div>
         <Card className="card-resume-step3 mx-auto text-center ">
           <div className="mx-3">
-            <h6 className="mt-3">Datos cuenta bancaria Nuwy</h6>
+            <h6 className="mt-3">Detalles de la transacción</h6>
           </div>
           <div className="d-flex bd-highligh  text-start body-list-data ">
             <ul className="flex-grow-1 bd-highlight">
               <li>
-                <b>Nombre</b>
+                <b>Enviaste</b>
               </li>
               <li>
-                <b>Rut</b>
+                <b>Recibirá</b>
               </li>
               <li>
-                <b>Email</b>
+                <b>Tipo de Cambio</b>
               </li>
               <li>
                 <b>Banco</b>
@@ -76,35 +83,36 @@ function SectionTransactionSuccessfull() {
               </li>
             </ul>
             <ul className=" bd-highlight">
-              <li>nuwy</li>
-              <li>00-000-000-N</li>
-              <li>correo@gmail.com</li>
-              <li>Banco</li>
-              <li>Corriente</li>
-              <li>00112354684</li>
+              <li>${dataSendMoney?.emisor.value} CLP</li>
+              <li>${dataSendMoney?.receptor.value} {dataSendMoney?.receptor.country}</li>
+              <li>{rate}</li>
+              <li>{dataBody?.DatosReceptor.banco}</li>
+              <li>{dataBody?.DatosReceptor.tipoCuenta}</li>
+              <li>{dataBody?.DatosReceptor.nCuenta}</li>
             </ul>
           </div>
         </Card>
         <div className="mb-5" style={{margin:'0 2rem'}}>
         <Link
                   to={{
-                      pathname: "/",
-                    }}
-                    className="text-white btn btn btn-nuwy-steps mt-3 "
-                    
-                    >
+                    pathname: "/",
+                  }}
+                  className="text-white btn btn btn-nuwy-steps mt-3 "
+                
+                  >
                  volver a inicio
                 </Link>
         <button
         
-                    className="text-white btn btn-cancel-step mt-3 "
-                    
+        className="text-white btn btn-cancel-step mt-3 "
+        
                     >
                   Descargar Comprobante
                 </button>
                     </div>
       </SectionsNuwy>
       <SectionFooter />
+        </DataContext>
     </>
   );
 }

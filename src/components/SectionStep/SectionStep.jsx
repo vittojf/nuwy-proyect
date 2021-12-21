@@ -8,7 +8,7 @@ const SectionStep = () => {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <section className=" bg-section-step ">
+    <section className=" bg-section-step " id="stepsSection">
       <article className=" mb-5 mx-3 px-2 section-body-step ">
         <div className=" mb-5 mx-4">
           <h3 className=" title-size text-center roboto-bold">

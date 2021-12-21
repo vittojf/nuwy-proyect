@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { ButtonGroup, Card, ToggleButton } from "react-bootstrap";
-import TopNambedInput from "../TopNambedInput/TopNambedInput";
+import React, { useEffect, useRef,useState} from "react";
+import {  Card } from "react-bootstrap";
+//import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
 import "./styles/FormStep1.css";
 import "./styles/FormStep3.css";
 
 function Step3({ children, steps, setSteps }) {
-  const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState("1");
-
-  const radios = [
-    { name: "Ahorro", value: "1" },
-    { name: "Corriente", value: "2" },
-    { name: "Especial", value: "3" },
-  ];
+  const [image, setImage] = useState();
+  const [preview, setPreview] = useState();
+  const [resImage, setResImage] = useState(false);
+  const [nameImage, setNameImage] = useState();
+  const fileInputRef =useRef()
 
   /*
   label={el.label}
@@ -33,12 +30,42 @@ function Step3({ children, steps, setSteps }) {
         "label-file d-flex justify-content-center  flex-wrap text-center px-5 mb-4 mt-1",
       textInputLabelStyle: "debe ser JPG, PNG o PDF y no pesar mas de 10MB",
       imageLabel: "/svg/captureScreen.svg",
+      preview:preview,
+      onChange:handleChangeFile,
+      fileName:nameImage,
+      
     },
   ];
 
+  function handleChangeFile(e){
+const file = e.target.files[0]
+if(file && file.type.substr(0, 5) === "image"){
+  setImage(file)
+  setResImage(true)
+}else{
+
+  setImage(null)
+  setResImage(false)
+}
+  }
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if(image){
+      const reader = new FileReader();
+      reader.onloadend=(e)=>{
+        setPreview(reader.result)
+        setNameImage(image.name)
+      }
+     
+      reader.readAsDataURL(image);
+    }else{
+      setPreview(null)
+
+    }
+  }, [image]);
 
   return (
     <>
@@ -46,6 +73,7 @@ function Step3({ children, steps, setSteps }) {
       <FormStep
         inputGroup={inputGroup}
         numberStep="3"
+        resImage={resImage}
         steps={steps}
         setSteps={setSteps}
         stepClass={"my-4"}

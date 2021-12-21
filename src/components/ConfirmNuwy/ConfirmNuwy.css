@@ -8,11 +8,20 @@ box-shadow: 0px 4px 20px 7px rgba(0, 0, 0, 0.25) !important;
 border-radius: 16px !important;
 
 }
-
+.text-condition-title{
+    font-size: 20px !important;
+    color:black !important;
+    text-align: justify !important;
+    text-justify: inter-word;
+}
 .modalNuwyBackdrop{
     background-color: unset !important;
 }
-
+.text-condition{
+    font-size: 13px;
+    text-align: justify;
+    text-justify: inter-word;
+}
 .fs-10{
     font-size: 50px;
     color: #18305D   ;
@@ -35,6 +44,13 @@ border-radius: 8px !important;
 }
 .icon-modal{
     margin-left: 19px;
+    
+}
+
+.btn-terminos {
+    color:#193EBE !important;
+    font-size: 20px  !important;
+    font-weight: 500;
     
 }
 
@@ -72,6 +88,10 @@ border-radius: 8px !important;
 
 
 }
+
+
+
+
 
 @media (min-width: 576px) {
     .modalNuwyConfirm{

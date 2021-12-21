@@ -38,7 +38,7 @@ function SectionAboutUs({ children, className, title, titleColor }) {
     },
   ]
   return (<>
-    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam" className="mt-100 mx-4-5 text-white">
+    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam " className="mt-100 mx-4-5 text-white">
       <div className="text-about-us">
         <p>
           Tanta petere igitur, ne sineres memini fieri etiam aliquam
@@ -58,7 +58,7 @@ function SectionAboutUs({ children, className, title, titleColor }) {
         </p>
       </div>
     </SectionsNuwy>
-    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam" color="#18305D" className="pb-5 section-persons text-center " titleClassName="mx-4-5 pt-4">
+    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam" color="#18305D" className="pb-5 section-persons text-center mt-100 " titleClassName="mx-4-5 pt-4">
       <div className="mt-4-5">
 <ListPerson persons={person}/>
       </div>

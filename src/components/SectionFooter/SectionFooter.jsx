@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ListRedSocial from "./ListRedSocial";
 import "./SectionFooter.css";
 
@@ -46,7 +47,7 @@ function SectionFooter() {
       <section className="  py-5   pb-10 ">
           
         <h1 className="text-white mb-3">Nuwy</h1>
-        <div className="row row-cols-1 row-cols-lg-4 ">
+        <div className="row row-cols-1 row-cols-lg-4 text-link ">
       
           <div className="col mt-3">
             <h6>Transferir dinero</h6>
@@ -65,7 +66,7 @@ function SectionFooter() {
           </div>
           <div className="col mt-3">
             <h6>Legal</h6>
-            <p>Terminos y Condiciones</p>
+         <a href="#stepsSection" >   <p>Terminos y Condiciones</p></a>
           </div>
         </div>
 

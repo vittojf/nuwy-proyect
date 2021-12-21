@@ -19,9 +19,10 @@ const Navbars = () => {
           <Navbar.Brand href="#home">Nuwy</Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            onClick={() => setExpanded(expanded ? false : "expanded")}
-          />
-          <Navbar.Collapse id="basic-navbar-nav">
+            style={{borderStyle:'unset'}}
+                      onClick={() => setExpanded(expanded ? false : "expanded")}
+          > <img src="/svg/bars.svg" alt="" /></Navbar.Toggle>
+          <Navbar.Collapse id="basic-navbar-nav" className="text-start">
             <Nav className="me-auto">
             <Link
                 className="nav-link"

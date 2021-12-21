@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
+//import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
 import "./styles/FormStep1.css";
 
-function Step2({children,steps,setSteps}) {
-  const [checked, setChecked] = useState(false);
+function Step2({children,steps,setSteps,dataBody,setDataBody}) {
+  //const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
-
-  const radios = [
-    { name: "Ahorro", value: "1" },
-    { name: "Corriente", value: "2" },
-    { name: "Especial", value: "3" },
-  ];
-
+const [valRadio, setValRadio] = useState({
+  val1:{value:1,checked:false},
+  val2:{value:2,checked:false},
+  val3:{value:3,checked:false}
+});
+const [selectValue, setSelectValue] = useState("default");
   /*
   label={el.label}
   LabelClassName={el.LabelClass}
@@ -28,6 +27,10 @@ function Step2({children,steps,setSteps}) {
       id: "name",
       type: "text",
       required: true,
+      value:dataBody.DatosReceptor.name??'',
+
+      name: "name",
+      onChange: handleOnChange,
     },
     {
       label: "Numero de identificación",
@@ -37,6 +40,9 @@ function Step2({children,steps,setSteps}) {
       textSpan: "DNI - CÉDULA - RUT",
       spanClass: "ms-2 spanText",
       boxClass: "my-4",
+      onChange: handleOnChange,
+      value:dataBody.DatosReceptor.dni??'',
+      name:'dni',
       type: "text",
       required: true,
     },
@@ -44,12 +50,29 @@ function Step2({children,steps,setSteps}) {
       label: "Correo Electronico",
       labelClass: "text-white",
       inputClass: " mt-1 form-step-1",
+      name:'email',
+      value:dataBody.DatosReceptor.email??'',
+
+      onChange: handleOnChange,
       id: "email",
       type: "email",
       required: true,
     },
   ];
+console.log(dataBody  )
+  function handleOnChange(e, name) {
+    setDataBody({ ...dataBody, DatosReceptor: { 
+    ...dataBody.DatosReceptor,  [name]: e 
+    
+    } 
+    
+    }
+      
+      );
+  }
 
+ 
+console.log(radioValue)
   return (
     <>
 {children}
@@ -67,59 +90,79 @@ function Step2({children,steps,setSteps}) {
           <label htmlFor="select" className="text-white">
             Banco
           </label>
-          <select id="select" name="select" className="mt-1">
-            <option hidden selected>
+          <select id="select" value={selectValue}  name="select" className="mt-1" onChange={(e)=>{handleOnChange(e.target.value,'banco')
+        setSelectValue(e.target.value)
+        }}>
+            <option value="default" hidden>
               Elige un Banco
             </option>
-            <option value="value">Value 1</option>
-            <option value="value2">Value 2</option>
-            <option value="value3">Value 3</option>
+            <option value="value" >Value 1</option>
+            <option value="value2" >Value 2</option>
+            <option value="value3" >Value 3</option>
           </select>
         </div>
         <div className="d-flex justify-content-between checkbox-nuwy ">
           <label
             htmlFor="ahorro"
-            className={`btn btn-nuwy-step ${radioValue === "1" && "actives"}`}
+            className={`btn btn-nuwy-step ${dataBody.DatosReceptor.tipoCuenta==='Ahorro' && "actives"}`}
           >
             Ahorro
           </label>
           <input
             type="radio"
             id="ahorro"
-            value="1"
+            value={valRadio.val1.value}
             name="ahorro"
-            checked={radioValue === "1"}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            checked={dataBody.DatosReceptor.tipoCuenta==='Ahorro'} 
+
+            onChange={(e) =>{ 
+              setRadioValue(e.currentTarget.value)
+              handleOnChange('Ahorro','tipoCuenta')
+            
+            }}
+            
           />
 
           <label
             htmlFor="corriente"
-            className={`btn btn-nuwy-step ${radioValue === "2" && "actives"}`}
+            className={`btn btn-nuwy-step ${dataBody.DatosReceptor.tipoCuenta==='Corriente' && "actives"}`}
           >
             Corriente
           </label>
           <input
             type="radio"
             id="corriente"
-            value="2"
+            value={valRadio.val2.value}
+
             name="corriente"
-            checked={radioValue === "2"}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+          
+            checked={dataBody.DatosReceptor.tipoCuenta==='Corriente'} 
+
+            
+            onChange={(e) => {
+              setRadioValue(e.currentTarget.value)
+              handleOnChange('Corriente','tipoCuenta')
+            }}
           />
 
           <label
             htmlFor="especial"
-            className={`btn btn-nuwy-step ${radioValue === "3" && "actives"}`}
+            className={`btn btn-nuwy-step ${dataBody.DatosReceptor.tipoCuenta==='Especial' && "actives"}`}
           >
             Especial
           </label>
           <input
             type="radio"
             id="especial"
-            value="3"
+            value={valRadio.val3.value}
+
             name="especial"
-            checked={radioValue === "3"}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            checked={dataBody.DatosReceptor.tipoCuenta==='Especial'} 
+
+           onChange={(e) => {setRadioValue(e.currentTarget.value)
+              handleOnChange('Especial','tipoCuenta')
+            
+            }}
           />
         </div>
       
@@ -130,6 +173,8 @@ function Step2({children,steps,setSteps}) {
          id="nCuenta"    
          type="number"
          required={true}
+         name="nCuenta"
+         onChange={ handleOnChange}
         />
 <div className="mx-4 text-center span-nuwy-step float mt-4-5">
 

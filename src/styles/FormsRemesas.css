@@ -18,3 +18,10 @@
 .card-remesas span{
     font-weight: 700;
 }
+
+.btnReset{
+    background-color: unset;
+    border:unset;
+    border-style: unset;
+    
+}
