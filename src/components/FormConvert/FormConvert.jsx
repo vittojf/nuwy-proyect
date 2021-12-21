@@ -110,11 +110,11 @@ if(amount===0){
         setValueInput1("");
         
         setDataSendMoney({...dataSendMoney,  emisor:{
-          country:'',
+  
           value:''
         },
         receptor:{
-          country:'',
+  
           value:''
         }})
       } else {
@@ -125,7 +125,7 @@ if(amount===0){
         );
       amount= parseFloat((value / data.conversion_rates[c2].toFixed(3)).toFixed(3))
 
-    setDataSendMoney({...dataSendMoney,emisor:{value:amount,country:"CLP"},receptor:{value:value,country:c2}})
+    setDataSendMoney({...dataSendMoney,emisor:{value:amount,country:"CLP"},receptor:{value:value}})
 
       }
     } else if (input === "emisor") {
@@ -134,11 +134,11 @@ if(amount===0){
         setValueInput1("");
         setValueInput2("");
         setDataSendMoney({...dataSendMoney,  emisor:{
-          country:'',
+     
           value:''
         },
         receptor:{
-          country:'',
+    
           value:''
         }})
         
@@ -149,7 +149,7 @@ if(amount===0){
           parseFloat((value * data.conversion_rates[c2].toFixed(3)).toFixed(3))
         );
         amount= parseFloat((value * data.conversion_rates[c2].toFixed(3)).toFixed(3))
-        setDataSendMoney({...dataSendMoney,emisor:{value:value,country:"CLP"},receptor:{value:amount,country:c2}})
+        setDataSendMoney({...dataSendMoney,emisor:{value:value,country:"CLP"},receptor:{value:amount}})
       }
     }
   }
@@ -228,6 +228,8 @@ return
               <img src="/svg/bandera-chile.svg" alt="banderaChile" />
             </button>
           </div>
+          <div className="d-flex flex-wrap">
+
           <span className="span-nuwy">
             Te damos:{" "}
             <b>
@@ -236,6 +238,15 @@ return
             </b>{" "}
             por <b>CLP</b>
           </span>
+          <span className="span-nuwy">
+          Monto máximo a transferir:{" "}
+            <b>
+            $20.000 CLP
+            </b>{" "}
+            
+          </span>
+          </div>
+        
         </article>
  
         <article className="mb-3  w-100">

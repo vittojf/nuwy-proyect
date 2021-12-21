@@ -16,7 +16,7 @@ const Navbars = () => {
         expanded={expanded}
       >
         <Container>
-          <Navbar.Brand href="#home">Nuwy</Navbar.Brand>
+          <Navbar.Brand ><Link to="/" className="text-white">Nuwy</Link></Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{borderStyle:'unset'}}

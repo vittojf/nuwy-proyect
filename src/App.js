@@ -6,6 +6,7 @@ import "./App.css";
 import {DataContext} from "./Context/dataContext";
 
 function App() {
+  
   return (
     <React.Fragment>
       <div className="bg" >

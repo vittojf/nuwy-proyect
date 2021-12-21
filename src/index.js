@@ -24,6 +24,7 @@ ReactDOM.render(
         <Route path="/preguntas-frecuentes" element={<AnswerAndContact/>} />
       </Route>
      
+ 
      <Route path="/successfullTransacction" element={<SectionTransactionSuccessfull/>}/>
     </Routes>
       </ScrollToTop>

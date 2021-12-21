@@ -13,7 +13,26 @@ function FormsRemesas() {
   const from = location.state;
 
   const {dataBody,setDataBody} = useContext(FormContext)
-
+  function selectIcon(v){
+    const peru='peruFlag.svg',ven='venezuelaFlag.svg',arg='argentinaFlag.svg'
+    
+    switch (v) {
+      case 'COL':
+        return 'colombia.svg';
+      case 'PEN':
+        return peru;
+      case 'VES':
+        return ven;
+        case 'ARS':
+          return arg;
+      
+    
+      default:
+      
+      return 'colombia.svg'
+    }
+    
+    }
   return (
     <section className="container mt-80">
    
@@ -35,8 +54,8 @@ function FormsRemesas() {
       </div>
       <div>
       <p className="m-0  mx-5 ">Recibirás:</p>
-        <span>
-          <img src="/svg/colombia.svg" alt="" /> $ {from.receptor.value} {from.receptor.country}  {" "}
+        <span> 
+          <img src={`/svg/${selectIcon(from.receptor.country)}`} alt="" /> $ {from.receptor.value} {from.receptor.country}  {" "}
         </span>
       </div>
     </Card>
