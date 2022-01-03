@@ -10,7 +10,7 @@ function SectionBenefits() {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <section className="container mt-100 mb-50">
+    <section className="container mt-100 mb-50 benefitsSection" >
       <div className="row row-cols-1 row-cols-lg-3 mx-1-5">
         <div className="col my-5">
           <Card
@@ -85,7 +85,7 @@ function SectionBenefits() {
       <h2 className="text-weight-normal">Envía sin comisiones, rápido y sin atados</h2>
 
 </div>
-      <Link to="/" className="btn btn-send-nuwy">Enviar Dinero</Link>
+      <Link to="/" className="btn btn-send-nuwy sendMoneyHome">Enviar Dinero</Link>
 
 </div>
 

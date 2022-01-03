@@ -1,5 +1,5 @@
 import React from "react";
-import Navbars from "./components/Navbars/Navbars";
+
 import SectionFooter from "./components/SectionFooter/SectionFooter";
 import { Outlet } from "react-router";
 import "./App.css";
@@ -12,7 +12,7 @@ function App() {
       <div className="bg" >
       <DataContext>
 
-        <Navbars />
+      
         <Outlet />
         <SectionFooter />
       </DataContext>

@@ -63,7 +63,7 @@ function AcordionAnswer() {
   return (
     <>
       <Accordion>
-        <Card className="nuwy-card-acordion">
+        <Card className="nuwy-card-acordion"  id="preguntas-frecuentes">
           <Card.Header className="header-nuwy-card">
             <CustomToggle
               eventKey="0"

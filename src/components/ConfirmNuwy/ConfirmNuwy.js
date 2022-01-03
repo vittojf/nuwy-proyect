@@ -96,7 +96,7 @@ function ConfirmNuwy(props) {
     <>
       <button
         type="button"
-        className="btn btn-send-nuwy mt-2"
+        className="btn btn-send-nuwy "
         onClick={() => setModalShow(true)}
       >
         Enviar Dinero

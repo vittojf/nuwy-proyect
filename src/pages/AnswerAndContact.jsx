@@ -1,9 +1,14 @@
 import React from 'react';
+import Navbars from '../components/Navbars/Navbars';
 import SectionAnswerAndContact from '../components/SectionAnswerAndContact/SectionAnswerAndContact';
 
 
 function AnswerAndContact() {
-    return (<SectionAnswerAndContact/> );
+    return (<>
+      <Navbars />
+    <SectionAnswerAndContact/> 
+    </>
+    );
 }
 
 export default AnswerAndContact;

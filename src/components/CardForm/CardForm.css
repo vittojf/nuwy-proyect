@@ -21,6 +21,7 @@ font-weight: 300;
   text-align: center;
 }
 
+
 .mx-14 {
   margin-left: 14px;
   margin-right: 14px;
@@ -197,6 +198,11 @@ width: 142px !important;
 transition: all 250ms !important ;
 }
 
+.cardNuwy{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
 @keyframes slideIn {
   0% {
     transform: translateY(1.5rem);
@@ -233,3 +239,45 @@ transition: all 250ms !important ;
 .dropdown-toggle::after {
   display: none !important;
 }
+
+@media (min-width: 576px) {  }
+
+@media (min-width: 768px) {  }
+
+@media (min-width: 992px) {  
+
+  .cardNuwy{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 160px !important;
+    margin-bottom: 160px !important;
+
+  }
+  .puntosStyle{
+    transform: translate(-70%, -35%) !important;
+    
+  z-index: -100 !important;
+    left:100%;
+  }
+  .puntosImage{
+    width: 215.5px;
+    height: 218.45px;
+  }
+  .title-size{
+    font-size: 25px !important;
+  }
+  .text-nuwy-size{
+  font-size: 18px !important;
+  
+  }
+  #card-section{
+    margin-bottom: 32px !important;
+  }
+ 
+}
+
+@media (min-width: 1200px) { 
+  
+ }
+
+@media (min-width: 1400px) {  }

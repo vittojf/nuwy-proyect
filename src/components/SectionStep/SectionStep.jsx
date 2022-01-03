@@ -8,19 +8,27 @@ const SectionStep = () => {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <section className=" bg-section-step " id="stepsSection">
-      <article className=" mb-5 mx-3 px-2 section-body-step ">
-        <div className=" mb-5 mx-4">
+    <section className=" bg-section-step section-step" id="stepsSection">
+      <article className=" mb-5 mx-3 px-2 section-body-step position-relative " >
+        <div className=" mb-5 mx-4 mt-1" data-aos="fade">
           <h3 className=" title-size text-center roboto-bold">
             Envia dinero a quien quieras en{" "}
             <span className="bg-text-mark-section-step ">3 simples pasos</span>
           </h3>
+         
+          
         </div>
-
-        <section className="row row-cols-1 row-cols-lg-3">
-          <div className="col" >
+        <div className="position-absolute  puntosStyleStep mt-1"  data-aos="fade">
+              <img
+                src="/img/puntosStep.png"
+                alt="puntos"
+                className="puntosImageStepStart"
+              />
+        </div>
+        <section className="row row-cols-1 row-cols-lg-3 stepsNuwy">
+          
+          <div className="col">
             <div className="d-flex  mt-4 forAnimation" data-aos="fade-right">
-                
               <div className="list-circle rounded-circle position-relative flex-shrink-0">
                 <span className="position-absolute top-50 start-50 translate-middle title-size">
                   1
@@ -42,9 +50,8 @@ const SectionStep = () => {
           </div>
 
           <div className="col">
-            <div className="d-flex  mt-4 " data-aos="fade-right" >
-                
-              <div className="" >
+            <div className="d-flex  mt-4 " data-aos="fade-right">
+              <div className="">
                 <div className="list-circle rounded-circle position-relative flex-shrink-0">
                   <span className="position-absolute top-50 start-50 translate-middle title-size">
                     2
@@ -88,7 +95,15 @@ const SectionStep = () => {
               </div>
             </div>
           </div>
+          
         </section>
+        <div className="position-absolute  end-0 puntosStyleStepEnd" data-aos="fade">
+              <img
+                src="/img/puntosStepEnd.png"
+                alt="puntos"
+                className="imgPuntos"
+              />
+            </div>
       </article>
     </section>
   );

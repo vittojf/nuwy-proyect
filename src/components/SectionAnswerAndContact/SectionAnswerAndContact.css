@@ -23,3 +23,39 @@
 .form-none{
     border-style: none;
 }
+
+
+
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) 
+{ 
+    
+ }
+
+@media (min-width: 992px) {  
+  
+.sectionAnsweAndContact{
+    margin-left:10rem ;
+    margin-right: 10rem;
+}
+
+.sectionContact{
+    margin-left:7rem ;
+    margin-right: 7rem;
+}
+ 
+
+}
+
+@media (min-width: 1200px) { 
+
+}
+
+@media (min-width: 1400px) {
+
+ 
+}

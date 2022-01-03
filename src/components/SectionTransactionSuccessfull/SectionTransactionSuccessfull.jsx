@@ -1,18 +1,16 @@
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
-import FormContext, { DataContext } from "../../Context/dataContext";
+import { Link } from "react-router-dom";
+import FormContext from "../../Context/dataContext";
 import SectionFooter from "../SectionFooter/SectionFooter";
 import SectionsNuwy from "../Sections/Sections";
 import "./sectionSuccessfull.css";
 function SectionTransactionSuccessfull() {
-  const location = useLocation();
-  const from = location.state;
-const {dataSendMoney,rate,dataBody} = from
+
+const { dataBody, rate, dataSendMoney } = useContext(FormContext);
 
   return (
     <>
-    <DataContext>
 
       <SectionsNuwy
         className="mt-4-5 mx-auto "
@@ -112,7 +110,7 @@ const {dataSendMoney,rate,dataBody} = from
                     </div>
       </SectionsNuwy>
       <SectionFooter />
-        </DataContext>
+
     </>
   );
 }

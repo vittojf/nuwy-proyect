@@ -5,6 +5,7 @@ import Card from "../components/Card/Card";
 import Step1 from "../components/FormSteps/Step1";
 import Step2 from "../components/FormSteps/Step2";
 import Step3 from "../components/FormSteps/Step3";
+import Navbars from "../components/Navbars/Navbars";
 import FormContext from "../Context/dataContext";
 import '../styles/FormsRemesas.css'
 function FormsRemesas() {
@@ -33,12 +34,13 @@ function FormsRemesas() {
     }
     
     }
-  return (
+  return (<>
+    <Navbars />
     <section className="container mt-80">
    
    {
      steps===1&& <Step1 setSteps={setSteps } setDataBody={setDataBody} dataBody={dataBody} steps={steps}>
-<div className="d-flex justify-content-between  justify-content-lg-start   align-items-center mb-5">
+<div className="d-flex justify-content-between  justify-content-lg-start   align-items-center mb-5 formRemesasStep">
     <Link to="/" className="text-white ms-4 fs-5  d-flex align-items-center">
      <img src="/svg/rowLeft.svg" alt="rowLeft" className="me-2"/> Volver
     </Link>
@@ -64,7 +66,7 @@ function FormsRemesas() {
     }
     {
       steps===2&&<Step2 setSteps={setSteps} steps={steps} setDataBody={setDataBody} dataBody={dataBody} >
-        <div className="d-flex justify-content-between  justify-content-lg-start   align-items-center mb-5">
+        <div className="d-flex justify-content-between  justify-content-lg-start   align-items-center mb-5 formRemesasStep">
     <button className=" text-white ms-4 fs-5 btnReset d-flex align-items-center  " onClick={()=>setSteps(1)} >
      <img src="/svg/rowLeft.svg" alt="rowLeft" className="me-2"/>
     Volver
@@ -95,6 +97,7 @@ function FormsRemesas() {
    
     
     </section>
+    </>
   );
 }
 

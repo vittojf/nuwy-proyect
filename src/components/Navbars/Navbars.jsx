@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import "./Navbar.css";
 
@@ -10,6 +11,7 @@ const Navbars = () => {
     <>
       <Navbar
         variant="dark"
+        
         expand="lg"
         style={{ background: "#5163A3" }}
         fixed="top"
@@ -22,31 +24,50 @@ const Navbars = () => {
             style={{borderStyle:'unset'}}
                       onClick={() => setExpanded(expanded ? false : "expanded")}
           > <img src="/svg/bars.svg" alt="" /></Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav" className="text-start">
-            <Nav className="me-auto">
+          <Navbar.Collapse  id="basic-navbar-nav" className="text-start justify-content-end">
+            <Nav className="justify-content-end">
+            <Nav.Item>
             <Link
-                className="nav-link"
+                className="nav-link me-link-nuwy"
                 to="/#card-section"
                 onClick={() => setExpanded(false)}
               >
                 {" "}
                 Transferir
               </Link>
+              </Nav.Item>
+              <Nav.Item>
               <Link
-                className="nav-link"
+                className="nav-link me-link-nuwy"
                 to="/sobre-nosotros"
                 onClick={() => setExpanded(false)}
               >
                 {" "}
                 Sobre Nosotros
               </Link>
+              </Nav.Item>
+              <Nav.Item>
+              <HashLink
+              className="nav-link me-link-nuwy"
+              to="/#stepsSection"
+              onClick={() => setExpanded(false)}
+              >
+
+             
+                {" "}
+               Como Funciona
+          
+                </HashLink>
+              </Nav.Item>
+              <Nav.Item>
               <Link
-                  className="nav-link"
-                  to="/preguntas-frecuentes"
+                  className="nav-link me-link-nuwy"
+                  to="/ayuda"
                   onClick={() => setExpanded(false)}
                 >
                   Ayuda
                 </Link>
+                </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>

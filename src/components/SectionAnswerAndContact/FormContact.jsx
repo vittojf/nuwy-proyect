@@ -19,7 +19,7 @@ function FormContact() {
           required:true
         },
       ];
-    return ( <section className="my-5  text-start ">
+    return ( <section className="my-5  text-start sectionContact " id="contacto">
 
         <h6 className="text-title-nuwy text-center mb-4">¿No encuentras tu respuesta? escríbenos</h6>
      {inputGroup.map((el) => {

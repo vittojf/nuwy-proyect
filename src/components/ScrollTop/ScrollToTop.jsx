@@ -3,8 +3,14 @@ import { useLocation } from "react-router-dom";
 
 const ScrollToTop = (props) => {
   const location = useLocation();
+  console.log(location)
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if(location.pathname==='/sobre-nosotros'||location.pathname==='/'){
+
+      window.scrollTo(0, 0);
+    }else{
+      return
+    }
   }, [location]);
 
   return <>{props.children}</>

@@ -5,7 +5,7 @@ import FormContact from './FormContact';
 import './SectionAnswerAndContact.css'
 export default function SectionAnswerAndContact() {
     return (<>
-    <SectionsNuwy title="Preguntas frecuentes" className="mt-100 mx-4-5 text-center" titleColor="#ffffff" titleClassName="mb-4" titleClassNameText=" title-acordion">
+    <SectionsNuwy title="Preguntas frecuentes" className="mt-100 mx-4-5 text-center sectionAnsweAndContact" titleColor="#ffffff" titleClassName="mb-4" titleClassNameText=" title-acordion">
 
         
     <AcordionAnswer/>

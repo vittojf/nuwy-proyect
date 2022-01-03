@@ -38,8 +38,9 @@ function SectionAboutUs({ children, className, title, titleColor }) {
     },
   ]
   return (<>
-    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam " className="mt-100 mx-4-5 text-white">
-      <div className="text-about-us">
+
+    <SectionsNuwy title="Tanta petere igitur, ne sineres memini fieri etiam aliquam " className="mt-100 mx-4-5 text-white sectionAboutUs">
+      <div className="text-about-us" >
         <p>
           Tanta petere igitur, ne sineres memini fieri etiam aliquam
           inclinationem ad consequendum minima. Instead, oportet omnino quieti

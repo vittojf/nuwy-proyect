@@ -14,20 +14,22 @@ import ScrollToTop from "./components/ScrollTop/ScrollToTop";
 import SectionTransactionSuccessfull from "./components/SectionTransactionSuccessfull/SectionTransactionSuccessfull";
 ReactDOM.render(
   <BrowserRouter>
-      <ScrollToTop>
-    <Routes>
+     <ScrollToTop>
+
+    <Routes >
 
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="/sendMoney"  element={<FormsRemesas/>}/>
         <Route path="/sobre-nosotros" element={<AboutUs/>} />
-        <Route path="/preguntas-frecuentes" element={<AnswerAndContact/>} />
+        <Route path="/ayuda" element={<AnswerAndContact/>} />
+     <Route path="/successfullTransacction" element={<SectionTransactionSuccessfull/>}/>
       </Route>
      
  
-     <Route path="/successfullTransacction" element={<SectionTransactionSuccessfull/>}/>
     </Routes>
-      </ScrollToTop>
+     </ScrollToTop>
+
   </BrowserRouter>,
 
   document.getElementById("root")

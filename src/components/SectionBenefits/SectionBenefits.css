@@ -29,4 +29,29 @@ line-height: 15.23px !important;
     color:#ECEDF1;
 
 }
+.sendMoneyHome{
+    width: 296px !important;
+height: 48px !important;
+}
 
+@media (min-width: 576px) {  }
+
+@media (min-width: 768px) {  }
+
+@media (min-width: 992px) {  
+    .benefitsSection{
+        padding:0 98px;
+    }
+    
+    
+}
+
+@media (min-width: 1200px) { 
+
+   
+ }
+
+@media (min-width: 1400px) {
+
+   
+  }

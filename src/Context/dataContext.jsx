@@ -1,5 +1,5 @@
 import React, { createContext,useState  } from "react";
-import {  validate, clean, format, getCheckDigit } from 'rut.js'
+import {  validate } from 'rut.js'
 const FormContext = createContext()
 function DataContext({children}) {
     const [dataBody, setDataBody] = useState({
@@ -35,8 +35,8 @@ function DataContext({children}) {
       const [data, setData] = useState({});
       const [rate, setRate] = useState();
       const [res, setRes] = useState(false);
-      //console.log(dataSendMoney)
-
+      console.log(dataSendMoney)
+      console.log('data body: '+ dataBody)
       const validateRut=()=>{
        return validate(dataBody["DatosUsuario"]["rut"])
       }

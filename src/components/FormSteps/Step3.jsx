@@ -1,4 +1,4 @@
-import React, { useEffect, useRef,useState} from "react";
+import React, { useEffect, useState} from "react";
 import {  Card } from "react-bootstrap";
 //import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
@@ -10,7 +10,7 @@ function Step3({ children, steps, setSteps }) {
   const [preview, setPreview] = useState();
   const [resImage, setResImage] = useState(false);
   const [nameImage, setNameImage] = useState();
-  const fileInputRef =useRef()
+
 
   /*
   label={el.label}
@@ -38,14 +38,15 @@ function Step3({ children, steps, setSteps }) {
   ];
 
   function handleChangeFile(e){
+console.log(e)
 const file = e.target.files[0]
 if(file && file.type.substr(0, 5) === "image"){
   setImage(file)
   setResImage(true)
-}else{
+}else if(file && file.type === "application/pdf"){
 
-  setImage(null)
-  setResImage(false)
+  setImage(file)
+  setResImage(true)
 }
   }
   useEffect(() => {
@@ -54,13 +55,23 @@ if(file && file.type.substr(0, 5) === "image"){
 
   useEffect(() => {
     if(image){
+ 
       const reader = new FileReader();
       reader.onloadend=(e)=>{
-        setPreview(reader.result)
-        setNameImage(image.name)
+        if(image.type==='application/pdf'){
+          setPreview('/img/pdf.png')
+          setNameImage(image.name)
+
+        }else{
+          setPreview(reader.result)
+          setNameImage(image.name)
+        }
       }
+ 
+
+       reader.readAsDataURL(image);
      
-      reader.readAsDataURL(image);
+
     }else{
       setPreview(null)
 
@@ -72,14 +83,14 @@ if(file && file.type.substr(0, 5) === "image"){
       {children}
       <FormStep
         inputGroup={inputGroup}
-        numberStep="3"
+        numberStep={3}
         resImage={resImage}
         steps={steps}
         setSteps={setSteps}
-        stepClass={"my-4"}
+        stepClass={"m-0"}
         titleStep="¡Ve y transfiere!"
         ubicationChildren="outside-form"
-        bodyFormClass="mx-3 "
+        bodyFormClass="mx-auto "
       >
         <Card className="card-resume-step3 mx-auto text-center ">
           <div className="mx-3">
@@ -117,7 +128,7 @@ if(file && file.type.substr(0, 5) === "image"){
           </div>
         </Card>
 
-        <div className="d-flex justify-content-center mt-3 text-white mx-3">
+        <div className="d-flex justify-content-center mt-3 text-white mx-3 mx-lg-5 mx-md-1 ">
           <div className="   list-circle rounded-circle position-relative  flex-shrink-0 bg-step-3-form ">
             <span className="position-absolute  start-50  translate-middle step-3-span">
               ¡

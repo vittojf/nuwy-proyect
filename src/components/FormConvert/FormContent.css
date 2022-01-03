@@ -11,3 +11,28 @@
   font-weight: 500 !important;
   color:#6A6E78 !important;
 }
+
+.spanSegurity{
+  margin: 1.5rem 0;
+}
+
+
+@media (min-width: 576px) {  }
+
+@media (min-width: 768px) {  }
+
+@media (min-width: 992px) {  
+
+  .spanSegurity{
+    margin: 0.5rem  0 !important;
+  }
+.formConvert{
+  padding: 0 42px;
+}
+}
+
+@media (min-width: 1200px) { 
+  
+ }
+
+@media (min-width: 1400px) {  }

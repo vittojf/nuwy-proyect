@@ -36,3 +36,7 @@ footer ul{
 .pb-4-5{
     padding-bottom: 2.2rem;
 }
+
+footer a{
+    color: white !important;
+}
