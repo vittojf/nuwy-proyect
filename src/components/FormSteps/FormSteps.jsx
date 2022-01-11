@@ -20,9 +20,7 @@ function FormStep({
   ubicationChildren,
   bodyFormClass,
   resImage,
-  setReadyReq,
-  readyReq
-}) {
+  trigger}) {
   const { dataBody, rate, dataSendMoney, setRes, validateRut } =
     useContext(FormContext);
 
@@ -38,6 +36,7 @@ function FormStep({
         console.log(err);
       });
   };
+  
 
   return (
     <>
@@ -286,10 +285,10 @@ function FormStep({
                               <button
                                 className={`btn btn-nuwy-steps  ${classButton}`}
                                 type="submit"
-                                disabled={readyReq??true}
+                                disabled={true}
                               >
                                
-                                { readyReq?<Spinner animation="border" variant="dark" />:' Continuar'}
+                                { trigger?<Spinner animation="border" variant="dark" />:' Continuar'}
                               </button>
                             )}
                           </>

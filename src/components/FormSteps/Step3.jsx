@@ -35,25 +35,28 @@ const [readyReq, setReadyReq] = useState(false);
       fileName: nameImage,
     },
   ];
-
+//https://nuwy-api-app.herokuapp.com/
   async function handleChangeFile(e) {
-    setReadyReq(!readyReq)
+    setReadyReq(true)
+    setResImage(false);
 
     const file = e.target.files[0];
     setDataBody({ ...dataBody, DatosCaptura: { fileName: file.name } });
     if (file && file.type.substr(0, 5) === "image") {
       setImage(file);
-      setResImage(true);
+     
       const formData = new FormData();
       formData.append("avatar", file);
       axios
-        .post("https://nuwy-api-app.herokuapp.com/imageupload", formData, {
+        .post("http://localhost:4000/imageupload", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
          
-          setReadyReq(!readyReq)
+            setResImage(true);
+            setReadyReq(!readyReq)
             alert("Captura Subida");
+          
           
         });
     } else if (file && file.type === "application/pdf") {
