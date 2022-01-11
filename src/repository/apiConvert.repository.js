@@ -10,7 +10,7 @@ export default class ApiConvertRepository {
     };
 
     let reqOptions = {
-      url:`http://api.exchangeratesapi.io/v1/latest?access_key=${process.env.REACT_APP_API_KEY}&base=CLP` ,
+      url:`https://api.exchangeratesapi.io/v1/latest?access_key=${process.env.REACT_APP_API_KEY}&base=CLP` ,
       method: "GET",
       headers: headersList,
     };
