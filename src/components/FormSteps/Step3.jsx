@@ -1,16 +1,16 @@
-import React, { useEffect, useState} from "react";
-import {  Card } from "react-bootstrap";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 //import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
 import "./styles/FormStep1.css";
 import "./styles/FormStep3.css";
 
-function Step3({ children, steps, setSteps }) {
+function Step3({ children, steps, setSteps, dataBody, setDataBody }) {
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const [resImage, setResImage] = useState(false);
   const [nameImage, setNameImage] = useState();
-
 
   /*
   label={el.label}
@@ -30,51 +30,57 @@ function Step3({ children, steps, setSteps }) {
         "label-file d-flex justify-content-center  flex-wrap text-center px-5 mb-4 mt-1",
       textInputLabelStyle: "debe ser JPG, PNG o PDF y no pesar mas de 10MB",
       imageLabel: "/svg/captureScreen.svg",
-      preview:preview,
-      onChange:handleChangeFile,
-      fileName:nameImage,
-      
+      preview: preview,
+      onChange: handleChangeFile,
+      fileName: nameImage,
     },
   ];
 
-  function handleChangeFile(e){
-console.log(e)
-const file = e.target.files[0]
-if(file && file.type.substr(0, 5) === "image"){
-  setImage(file)
-  setResImage(true)
-}else if(file && file.type === "application/pdf"){
-
-  setImage(file)
-  setResImage(true)
-}
+  async function handleChangeFile(e) {
+    console.log(e)
+    const file = e.target.files[0];
+    setDataBody({ ...dataBody, DatosCaptura: { fileName: file.name } });
+    if (file && file.type.substr(0, 5) === "image") {
+      setImage(file);
+      setResImage(true);
+      const formData = new FormData();
+      formData.append("avatar", file);
+      axios
+        .post("https://nuwy-api-app.herokuapp.com/imageupload", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+         
+            
+            alert("Image upload successfully");
+          
+        });
+    } else if (file && file.type === "application/pdf") {
+      setImage(file);
+      setResImage(true);
+    }
   }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    if(image){
- 
+    if (image) {
       const reader = new FileReader();
-      reader.onloadend=(e)=>{
-        if(image.type==='application/pdf'){
-          setPreview('/img/pdf.png')
-          setNameImage(image.name)
-
-        }else{
-          setPreview(reader.result)
-          setNameImage(image.name)
+      reader.onloadend = (e) => {
+        if (image.type === "application/pdf") {
+          setPreview("/img/pdf.png");
+          setNameImage(image.name);
+        } else {
+          setPreview(reader.result);
+          setNameImage(image.name);
         }
-      }
- 
+      };
 
-       reader.readAsDataURL(image);
-     
-
-    }else{
-      setPreview(null)
-
+      reader.readAsDataURL(image);
+    } else {
+      setPreview(null);
     }
   }, [image]);
 
@@ -87,7 +93,7 @@ if(file && file.type.substr(0, 5) === "image"){
         resImage={resImage}
         steps={steps}
         setSteps={setSteps}
-        stepClass={"m-0"}
+        stepClass={"m-0 "}
         titleStep="¡Ve y transfiere!"
         ubicationChildren="outside-form"
         bodyFormClass="mx-auto "

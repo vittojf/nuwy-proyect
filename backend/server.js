@@ -1,17 +1,20 @@
 const express = require("express");
-
 const app = express();
 require("dotenv").config();
-
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
-const log = console.log;
 const path = require("path");
+const multer = require("multer"); 
+const fs = require('fs')
+const log = console.log;
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+ 
 app.use(cors());
 
 const transport = nodemailer.createTransport({
@@ -34,79 +37,66 @@ transport.use(
   })
 );
 
-app.post("/send-mail", cors(), async (req, res) => {
-  // let body = req.body;
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, './public_html/', 'uploads'),
+  filename: function (req, file, cb) {   
+      // null as first argument means no error
+      cb(null,file.originalname )  
+  }
+})
 
-  let mailOptions = {
-    from: "vittoriano@bloomcker.io",
-    to: "vittodeveloper@gmail.com",
-    subject: "TESTING MAIL DESDE UN ENDPOINT",
-    template: "index",
-    context: {
-      body: {
-        dataSendMoney: {
-          emisor: {
-            country: "CLP",
-            value: 1,
-          },
-          receptor: {
-            country: "COP",
-            value: 4.721,
+app.post('/imageupload', async (req, res) => {	
+  try {
+      // 'avatar' is the name of our file input field in the HTML form
+
+      let upload = multer({ storage: storage}).single('avatar');
+
+      upload(req, res, function(err) {
+          // req.file contains information of uploaded file
+          // req.body contains information of text fields
+
+          if (!req.file) {
+            //  return res.send('Please select an image to upload');
+            log(req)
           }
-        },
-          DatosUsuario: {
-            email: "eee",
-            rut: "25.814.996-3",
-            name: "222",
-          },
-          DatosReceptor: {
-            tipoCuenta: "Corriente",
-            name: "vittoriano",
-            dni: "15685",
-            email: "qwe",
-            banco: "value2",
-            nCuenta: "32151",
-          },
-          DatosCaptura: {},
-          rate:4.66 
-      }
-    },
+          else if (err instanceof multer.MulterError) {
+              return res.send(err);
+          }
+          else if (err) {
+              return res.send(err);
+          }
+  
+
+    
+
+      }); 
+
+  }catch (err) {console.log(err)}
+})
+
+app.post("/send-mail", cors(), async (req, res) => {
+  let body = req.body;
+  var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to:body.DatosUsuario.email,
+    subject: `${body.DatosUsuario.name}, haz realizado una transferencia con Nuwy`,
+    template: "index",
+    context: body
+
   };
 
   let mailOptionsNuwy = {
-    from: "vittoriano@bloomcker.io",
-    to: "vittoriano@bloomcker.io",
-    subject: "TESTING MAIL DESDE UN ENDPOINT",
+    from: process.env.EMAIL,
+    to: process.env.EMAIL,
+    subject: "Han realizado una transferencia",
     template: "nuwySend",
-    context: {
-      body: {
-        dataSendMoney: {
-          emisor: {
-            country: "CLP",
-            value: 1,
-          },
-          receptor: {
-            country: "COP",
-            value: 4.721,
-          }
-        },
-          DatosUsuario: {
-            email: "eee",
-            rut: "25.814.996-3",
-            name: "222",
-          },
-          DatosReceptor: {
-            tipoCuenta: "Corriente",
-            name: "vittoriano",
-            dni: "15685",
-            email: "qwe",
-            banco: "value2",
-            nCuenta: "32151",
-          },
-          DatosCaptura: {},
-          rate:4.66 
-      }
-    },
+    context: body,
+    attachments : [{
+      filename: "Header@3x.png",
+      path:imagePath,        
+
+}]
   };
 
 
@@ -121,14 +111,15 @@ app.post("/send-mail", cors(), async (req, res) => {
     if (err) {
       return log("Error", err);
     } else {
+      fs.unlinkSync(path)
       return log("Correo enviado");
     }
   });
 
 });
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log("server activo en el puerto : 4000");
+app.listen(process.env.PORT || 3100, () => {
+  console.log("server activo");
 });
 
 //

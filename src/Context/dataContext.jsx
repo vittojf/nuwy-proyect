@@ -1,49 +1,103 @@
-import React, { createContext,useState  } from "react";
-import {  validate } from 'rut.js'
-const FormContext = createContext()
-function DataContext({children}) {
-    const [dataBody, setDataBody] = useState({
-        
-        DatosUsuario:{
-            "email": "",
-            "rut": "",
-            "name": ""
-        },
-        DatosReceptor:{
-            "tipoCuenta":'Ahorro',
-            "name": "",
-            "dni": "",
-            "email": "",
-            "banco": "",
-            "nCuenta": ""
-        
-    
+import React, { createContext, useState,useEffect } from "react";
+import { validate } from "rut.js";
+const FormContext = createContext();
+function DataContext({ children }) {
+  const [dataBody, setDataBody] = useState({
+    DatosUsuario: {
+      email: "",
+      rut: "",
+      name: "",
     },
-        DatosCaptura:{}
-    });
-    const [dataSendMoney, setDataSendMoney] = useState({
-        emisor:{
-          country:'',
-          value:''
-        },
-        receptor:{
-          country:'',
-          value:''
-        },
-      });
+    DatosReceptor: {
+      tipoCuenta: "Ahorro",
+      name: "",
+      dni: "",
+      email: "",
+      banco: "",
+      nCuenta: "",
+    },
+    DatosCaptura: {},
+  });
+  const [dataSendMoney, setDataSendMoney] = useState({
+    emisor: {
+      country: "",
+      value: "",
+      countryName: "",
+    },
+    receptor: {
+      country: "",
+      value: "",
+      countryName: "",
+    },
+  });
 
-      const [data, setData] = useState({});
-      const [rate, setRate] = useState();
-      const [res, setRes] = useState(false);
-      console.log(dataSendMoney)
-      console.log('data body: '+ dataBody)
-      const validateRut=()=>{
-       return validate(dataBody["DatosUsuario"]["rut"])
-      }
-const datas={dataBody,setDataBody,dataSendMoney,setDataSendMoney,setRes,res,data,setData,rate,setRate,validateRut}
-    return <FormContext.Provider value={datas}>{children}</FormContext.Provider> 
+  const [data, setData] = useState({});
+  const [rate, setRate] = useState();
+  const [res, setRes] = useState(false);
+const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [value, setValue] = useState(new Date());
+ 
+  useEffect(() => {
+    const interval = setInterval(
+      () => setValue(new Date()),
+      1000
+    );
+ 
+    return () => {
+      clearInterval(interval);
+    }
+  }, []);
+
+
+  
+useEffect(() => {
+  if(value.toLocaleTimeString("es-CL",{
+    timeZone: "America/Santiago",
+    hour12: true, // false
+    hour: "numeric", // 2-digit
+    minute: "2-digit", // numeric
+    second: "2-digit" // numeric
+  })>='9:00:00 a. m.')
+  {
+    
+    setButtonDisabled(false)
+  }
+  if(value.toLocaleTimeString("es-CL",{
+    timeZone: "America/Santiago",
+    hour12: true, // false
+    hour: "numeric", // 2-digit
+    minute: "2-digit", // numeric
+    second: "2-digit" // numeric
+  })>='6:00:00 p. m.'){
+    
+    setButtonDisabled(false)
+
+  }
+
+}, [value]);
+
+
+  const validateRut = () => {
+    return validate(dataBody["DatosUsuario"]["rut"]);
+  };
+  const datas = {
+    dataBody,
+    setDataBody,
+    dataSendMoney,
+    setDataSendMoney,
+    setRes,
+    res,
+    data,
+    setData,
+
+    rate,
+    setRate,
+    validateRut,
+    buttonDisabled
+  };
+  return <FormContext.Provider value={datas}>{children}</FormContext.Provider>;
 }
 
-export {DataContext}
+export { DataContext };
 
 export default FormContext;

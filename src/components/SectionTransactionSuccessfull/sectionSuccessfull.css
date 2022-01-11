@@ -21,3 +21,50 @@
 .text-body-contact-alert b{
     color: #5DAD1F ;
 }
+.containerNuwySuccessFull{
+    max-width: 600px;
+    border-radius: 8px;
+ 
+
+}
+
+.card-resume-sucessfull {
+    border-radius: 8px !important;
+    background-color: white !important;
+    max-width: 388px;
+    min-width: 295px ;
+    color: #18305D;
+  }
+
+  .card-resume-sucessfull .body-list-data{
+    font-size: 11px !important;
+    margin-top: 18px;
+    color: #18305D;
+  }
+
+
+  @media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) 
+{ 
+  
+
+ }
+
+@media (min-width: 992px) {  
+    .containerNuwySuccessFull{
+        background-color: #2A4372;
+    }
+}
+
+@media (min-width: 1200px) { 
+  
+   
+}
+
+@media (min-width: 1400px) {
+
+ 
+}

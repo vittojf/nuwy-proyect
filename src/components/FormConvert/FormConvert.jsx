@@ -2,12 +2,13 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 
 import "./FormContent.css";
 import ConfirmNuwy from "../ConfirmNuwy/ConfirmNuwy";
-import axios from "axios";
 import FormContext from "../../Context/dataContext";
 import ListCountry from "./ListCountry/ListCountry";
 import { useOutsideAlerter } from "../../hooks/useOutsideAlerter";
+import ApiConvertRepository from "../../repository/apiConvert.repository";
 
-
+//import ApiConvertRepository from '../../repository/apiConvert.repository'
+const repo = new ApiConvertRepository()
 function FormConvert() {
   const [dropwdown, setDropwdown] = useState(false);
 
@@ -24,7 +25,7 @@ function FormConvert() {
     data,
     setData,
     setRate,
-    rate,
+    rate
   } = useContext(FormContext);
 
   const handleClassChange = (e) => {
@@ -52,17 +53,17 @@ function FormConvert() {
     }
   }
 
-  function handleChangeCountry(v) {
+  function handleChangeCountry(v,name) {
     let amount = parseFloat(
-      (valueInput1 * data.conversion_rates[v].toFixed(3)).toFixed(3)
+      (valueInput1 * data.rates[v].toFixed(3)).toFixed(3)
     );
     setC2(v);
-    setRate(parseFloat(data.conversion_rates[v].toFixed(3)));
+    setRate(parseFloat(data.rates[v].toFixed(3)));
     if (amount === 0) {
     } else {
       setDataSendMoney({
         ...dataSendMoney,
-        receptor: { value: amount, country: v },
+        receptor: { value: amount, country: v,countryName:name },
       });
     }
   }
@@ -87,10 +88,10 @@ function FormConvert() {
         value = Math.max(Math.min(Number(max), Number(value)));
 
         setValueInput1(
-          parseFloat((value / data.conversion_rates[c2].toFixed(3)).toFixed(3))
+          parseFloat((value / data.rates[c2].toFixed(3)).toFixed(3))
         );
         amount = parseFloat(
-          (value / data.conversion_rates[c2].toFixed(3)).toFixed(3)
+          (value / data.rates[c2].toFixed(3)).toFixed(3)
         );
 
         setDataSendMoney({
@@ -118,7 +119,7 @@ function FormConvert() {
         setValueInput1(value);
 
         amount = parseFloat(
-          (value * data.conversion_rates[c2].toFixed(3)).toFixed(3)
+          (value * data.rates[c2].toFixed(3)).toFixed(3)
         );
         setDataSendMoney({
           ...dataSendMoney,
@@ -133,25 +134,26 @@ function FormConvert() {
     if (res) {
       return;
     } else {
-      axios
-        .get(
-          `https://v6.exchangerate-api.com/v6/53fc54f1da350fcd30a8868c/latest/clp`
-        )
+      repo.getData()
         .then((res) => {
-          console.log(res.data);
-          setData(res.data);
-          setRate(parseFloat(res.data.conversion_rates["COP"].toFixed(3)));
+          console.log(res);
+          setData(res);
+          setRate(parseFloat(res.rates["COP"].toFixed(3)));
           setRes(true);
 
           setDataSendMoney({
             emisor: {
               country: "CLP",
               value: 1,
+
+
             },
             receptor: {
               country: "COP",
+              countryName:'Colombia',
+
               value: parseFloat(
-                (1 * res.data.conversion_rates["COP"].toFixed(3)).toFixed(3)
+                (1 * res.rates["COP"].toFixed(3)).toFixed(3)
               ),
             },
           });
@@ -166,6 +168,7 @@ function FormConvert() {
     return number.toString().replace(exp, rep);
   };
 */
+
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setDropwdown);
   return (
@@ -187,7 +190,7 @@ function FormConvert() {
               type="number"
               value={dataSendMoney.emisor.value ?? ""}
               className="form-control form-control-nuwy-number  "
-              max={20000}
+              max={500000}
               min={0}
               aria-label="Text input with dropdown button"
               onChange={(e) => handleChangeVal(e, "emisor")}
@@ -207,7 +210,7 @@ function FormConvert() {
               por <b>CLP</b>
             </span>
             <span className="span-nuwy">
-              Monto máximo a transferir: <b>$20.000 CLP</b>{" "}
+              Monto máximo a transferir: <b>$500.000 CLP</b>{" "}
             </span>
           </div>
         </article>
@@ -231,9 +234,9 @@ function FormConvert() {
               max={
                 res
                 ? parseFloat(
-                  (20000 * data.conversion_rates[c2].toFixed(3)).toFixed(3)
+                  (500000 * data.rates[c2].toFixed(3)).toFixed(3)
                   )
-                  : 2000000
+                  : 500000
                 }
               onChange={(e) => handleChangeVal(e, "receptor")}
             />

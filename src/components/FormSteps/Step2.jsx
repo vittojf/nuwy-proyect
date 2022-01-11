@@ -2,15 +2,18 @@ import React, { useState } from "react";
 //import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import FormStep from "./FormSteps";
+import bancosData from "./dataBancos.json"
+
+import "simplebar/src/simplebar.css";
 import "./styles/FormStep1.css";
 
 function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
   //const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState("1");
+
   const [valRadio, setValRadio] = useState({
     val1: { value: 1, checked: false },
     val2: { value: 2, checked: false },
-    val3: { value: 3, checked: false },
+    val3: { value: 3, checked: false }, 
   });
   const [selectValue, setSelectValue] = useState("default");
   /*
@@ -59,7 +62,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
       required: true,
     },
   ];
-  console.log(dataBody);
+
   function handleOnChange(e, name) {
     setDataBody({
       ...dataBody,
@@ -70,7 +73,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
     });
   }
 
-  console.log(radioValue);
+
   return (
     <>
       {children}
@@ -89,6 +92,8 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
             <label htmlFor="select" className="text-white">
               Banco
             </label>
+            
+
             <select
               id="select"
               value={selectValue}
@@ -99,20 +104,29 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
                 setSelectValue(e.target.value);
               }}
             >
+            
+
               <option value="default" hidden>
                 Elige un Banco
-              </option>
-              <option value="value">Value 1</option>
-              <option value="value2">Value 2</option>
-              <option value="value3">Value 3</option>
+              </option>{
+                bancosData.map((el,key)=>(
+                  <option value={el.value} key={key}>{el.value}</option>
+                  ))
+                }
+         
+       
+            
             </select>
+
+             
           </div>
         </div>
 
-        <div className="row row-cols-1 row-cols-lg-3 checkbox-nuwy justify-content-between mx-auto mt-0 mt-lg-5 ">
+        <div className="row rows-cols-1 rows-cols-lg-2 checkbox-nuwy justify-content-between mx-auto mt-0 mt-lg-5  ">
+          
           <label
             htmlFor="ahorro"
-            className={`btn btn-nuwy-step btn-radio-nuwy ${
+            className={`btn btn-nuwy-step btn-radio-nuwy col me-3 ${
               dataBody.DatosReceptor.tipoCuenta === "Ahorro" && "actives"
             }`}
           >
@@ -125,7 +139,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
             name="ahorro"
             checked={dataBody.DatosReceptor.tipoCuenta === "Ahorro"}
             onChange={(e) => {
-              setRadioValue(e.currentTarget.value);
+            
               handleOnChange("Ahorro", "tipoCuenta");
               setValRadio({
                 ...valRadio,
@@ -136,7 +150,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
 
           <label
             htmlFor="corriente"
-            className={`btn btn-nuwy-step btn-radio-nuwy ${
+            className={`btn btn-nuwy-step btn-radio-nuwy  col ${
               dataBody.DatosReceptor.tipoCuenta === "Corriente" && "actives"
             }`}
           >
@@ -149,30 +163,12 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
             name="corriente"
             checked={dataBody.DatosReceptor.tipoCuenta === "Corriente"}
             onChange={(e) => {
-              setRadioValue(e.currentTarget.value);
+              
               handleOnChange("Corriente", "tipoCuenta");
             }}
           />
 
-          <label
-            htmlFor="especial"
-            className={`btn btn-nuwy-step btn-radio-nuwy ${
-              dataBody.DatosReceptor.tipoCuenta === "Especial" && "actives"
-            }`}
-          >
-            Especial
-          </label>
-          <input
-            type="radio"
-            id="especial"
-            value={valRadio.val3.value}
-            name="especial"
-            checked={dataBody.DatosReceptor.tipoCuenta === "Especial"}
-            onChange={(e) => {
-              setRadioValue(e.currentTarget.value);
-              handleOnChange("Especial", "tipoCuenta");
-            }}
-          />
+  
         </div>
 
         <div className="col">
@@ -194,9 +190,44 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
 }
 
 export default Step2;
-/*<div className="mx-4 text-center span-nuwy-step float mt-4-5">
+
+/*
+//============================================================================================================================================================================================================================================================================================================================
+//                                                                                                                                                                                                                                                                                                                            
+//  ##   ####    ##     ##   #####   #####      ###    #####                                                                                                                                                                                                                                                                
+//  ##  ##       ####   ##  ##   ##  ##  ##    ## ##   ##  ##                                                                                                                                                                                                                                                               
+//  ##  ##  ###  ##  ## ##  ##   ##  #####    ##   ##  #####                                                                                                                                                                                                                                                                
+//  ##  ##   ##  ##    ###  ##   ##  ##  ##   #######  ##  ##                                                                                                                                                                                                                                                               
+//  ##   ####    ##     ##   #####   ##   ##  ##   ##  ##   ##                                                                                                                                                                                                                                                              
+//                                                                                                                                                                                                                                                                                                                            
+//============================================================================================================================================================================================================================================================================================================================
+
+
+
+<div className="mx-4 text-center span-nuwy-step float mt-4-5">
           <span className="text-white ">
             Asegurate que los datos sean correctos de lo contrario puede ser
             rechazado tu envío
           </span>
-        </div> */
+        </div>
+                <label
+            htmlFor="especial"
+            className={`btn btn-nuwy-step btn-radio-nuwy ${
+              dataBody.DatosReceptor.tipoCuenta === "Especial" && "actives"
+            }`}
+          >
+            Especial
+          </label>
+          <input
+            type="radio"
+            id="especial"
+            value={valRadio.val3.value}
+            name="especial"
+            checked={dataBody.DatosReceptor.tipoCuenta === "Especial"}
+            onChange={(e) => {
+              setRadioValue(e.currentTarget.value);
+              handleOnChange("Especial", "tipoCuenta");
+            }}
+          />
+        
+        */

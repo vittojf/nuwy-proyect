@@ -55,7 +55,7 @@ function ListCountry({handleClassChange,wrapperRef,selectIcon,dropwdown,handleCh
           <Dropdown.Item
             href="#/action-2"
             className="textIconScroll"
-            onClick={() => handleChangeCountry("COP")}
+            onClick={() => handleChangeCountry("COP","Colombia")}
           >
             <span className="spanIconScroll ">
               <img
@@ -67,10 +67,39 @@ function ListCountry({handleClassChange,wrapperRef,selectIcon,dropwdown,handleCh
             </span>
             <span className="ms-1">Colombia</span>
           </Dropdown.Item>
-          <Dropdown.Item
+          
+        </SimpleBarReact>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+}
+
+export default ListCountry;
+
+
+/*
+//==========================================================================================================================================================================================================================================================================================================================================================
+//                                                                                                                                                                                                                                                                                                                                                          
+//   #####   ######  #####     #####    ####        #####     ###    ##   ####  #####   ####                                                                                                                                                                                                                                                              
+//  ##   ##    ##    ##  ##   ##   ##  ##           ##  ##   ## ##   ##  ##     ##     ##                                                                                                                                                                                                                                                                 
+//  ##   ##    ##    #####    ##   ##   ###         #####   ##   ##  ##   ###   #####   ###                                                                                                                                                                                                                                                               
+//  ##   ##    ##    ##  ##   ##   ##     ##        ##      #######  ##     ##  ##        ##                                                                                                                                                                                                                                                              
+//   #####     ##    ##   ##   #####   ####         ##      ##   ##  ##  ####   #####  ####                                                                                                                                                                                                                                                               
+//                                                                                                                                                                                                                                                                                                                                                          
+//==========================================================================================================================================================================================================================================================================================================================================================
+//============================================================================================================================================================================================================================================================================================================================
+//                                                                                                                                                                                                                                                                                                                            
+//  ##   ####    ##     ##   #####   #####      ###    #####                                                                                                                                                                                                                                                                
+//  ##  ##       ####   ##  ##   ##  ##  ##    ## ##   ##  ##                                                                                                                                                                                                                                                               
+//  ##  ##  ###  ##  ## ##  ##   ##  #####    ##   ##  #####                                                                                                                                                                                                                                                                
+//  ##  ##   ##  ##    ###  ##   ##  ##  ##   #######  ##  ##                                                                                                                                                                                                                                                               
+//  ##   ####    ##     ##   #####   ##   ##  ##   ##  ##   ##                                                                                                                                                                                                                                                              
+//                                                                                                                                                                                                                                                                                                                            
+//============================================================================================================================================================================================================================================================================================================================
+<Dropdown.Item
             href="#/action-2"
             className="textIconScroll"
-            onClick={() => handleChangeCountry("ARS")}
+            onClick={() => handleChangeCountry("ARS","Argentina")}
           >
             <span className="spanIconScroll ">
               <img
@@ -87,7 +116,7 @@ function ListCountry({handleClassChange,wrapperRef,selectIcon,dropwdown,handleCh
           <Dropdown.Item
             href="#/action-2"
             className="textIconScroll"
-            onClick={() => handleChangeCountry("PEN")}
+            onClick={() => handleChangeCountry("PEN","Peru")}
           >
             <span className="spanIconScroll ">
               <img
@@ -104,7 +133,7 @@ function ListCountry({handleClassChange,wrapperRef,selectIcon,dropwdown,handleCh
           <Dropdown.Item
             href="#/action-2"
             className="textIconScroll"
-            onClick={() => handleChangeCountry("VES")}
+            onClick={() => handleChangeCountry("VES","Venezuela")}
           >
             <span className="spanIconScroll ">
               <img
@@ -116,10 +145,5 @@ function ListCountry({handleClassChange,wrapperRef,selectIcon,dropwdown,handleCh
             </span>
             <span className="ms-1">Venezuela</span>
           </Dropdown.Item>
-        </SimpleBarReact>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-}
 
-export default ListCountry;
+*/

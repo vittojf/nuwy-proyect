@@ -46,7 +46,7 @@ function FormStep1({ children, steps, setSteps, dataBody, setDataBody }) {
       value:dataBody.DatosUsuario.email??'',
     },
   ];
-  console.log(dataBody);
+
   function handleOnChange(e, name) {
     if(name==='rut'){
      

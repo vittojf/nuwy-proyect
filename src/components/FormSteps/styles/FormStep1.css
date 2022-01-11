@@ -115,7 +115,12 @@ justify-content: center;
 
 @media (min-width: 768px) 
 { 
-    
+  .sectionStepsBody{ 
+    margin-left:3rem ;
+    margin-right: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
  }
 
 @media (min-width: 992px) {  
@@ -131,12 +136,7 @@ margin-bottom: 5rem;
 margin-left:5rem ;
 margin-right: 5rem;
 }
-.sectionStepsBody{
-  margin-left:6rem ;
-  margin-right: 6rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
+
 
 }
 
@@ -153,6 +153,12 @@ margin-right: 5rem;
     color: #18305D ;
   }
   
+  .sectionStepsBody{ 
+    margin-left:5rem ;
+    margin-right: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 }
 
 @media (min-width: 1400px) {

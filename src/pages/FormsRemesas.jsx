@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Card from "../components/Card/Card";
-//import CardDataSend from "../components/CardDataSend/CardDataSend";
+
 import Step1 from "../components/FormSteps/Step1";
 import Step2 from "../components/FormSteps/Step2";
 import Step3 from "../components/FormSteps/Step3";
@@ -34,7 +35,13 @@ function FormsRemesas() {
     }
     
     }
+
+  
+
+
   return (<>
+  {
+    from?.emisor?<>
     <Navbars />
     <section className="container mt-80">
    
@@ -97,8 +104,9 @@ function FormsRemesas() {
    
     
     </section>
+  </>:<Navigate to="/"/>}
     </>
-  );
+    );
 }
 
 export default FormsRemesas;
