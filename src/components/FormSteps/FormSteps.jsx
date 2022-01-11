@@ -5,6 +5,7 @@ import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import { toast, Toaster } from "react-hot-toast";
 import "./styles/FormStep1.css";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
 function FormStep({
   children,
   inputGroup,
@@ -19,6 +20,8 @@ function FormStep({
   ubicationChildren,
   bodyFormClass,
   resImage,
+  setReadyReq,
+  readyReq
 }) {
   const { dataBody, rate, dataSendMoney, setRes, validateRut } =
     useContext(FormContext);
@@ -283,9 +286,10 @@ function FormStep({
                               <button
                                 className={`btn btn-nuwy-steps  ${classButton}`}
                                 type="submit"
-                                disabled={true}
+                                disabled={readyReq??true}
                               >
-                                Continuar
+                               
+                                { readyReq?<Spinner animation="border" variant="dark" />:' Continuar'}
                               </button>
                             )}
                           </>

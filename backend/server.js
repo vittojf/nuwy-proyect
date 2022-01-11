@@ -50,27 +50,29 @@ app.post('/imageupload', async (req, res) => {
       // 'avatar' is the name of our file input field in the HTML form
 
       let upload = multer({ storage: storage}).single('avatar');
-
+    
       upload(req, res, function(err) {
           // req.file contains information of uploaded file
           // req.body contains information of text fields
+  //console.log(res)
 
           if (!req.file) {
-            //  return res.send('Please select an image to upload');
-            log(req)
+           
+            return res.send(res);
           }
           else if (err instanceof multer.MulterError) {
-              return res.send(err);
+            return res.status(500).json(err)
           }
           else if (err) {
-              return res.send(err);
+            return res.status(500).json(err)
           }
   
-
+return res.status(200).send(req.file)
     
-
-      }); 
-
+          
+        }); 
+      
+    //  return res;
   }catch (err) {console.log(err)}
 })
 
@@ -118,7 +120,8 @@ app.post("/send-mail", cors(), async (req, res) => {
 
 });
 
-app.listen(process.env.PORT || 3100, () => {
+app.listen(process.env.PORT , (req,res) => {
+  console.log(process.env.PORT)
   console.log("server activo");
 });
 

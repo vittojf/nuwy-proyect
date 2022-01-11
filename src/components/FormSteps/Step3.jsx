@@ -11,7 +11,7 @@ function Step3({ children, steps, setSteps, dataBody, setDataBody }) {
   const [preview, setPreview] = useState();
   const [resImage, setResImage] = useState(false);
   const [nameImage, setNameImage] = useState();
-
+const [readyReq, setReadyReq] = useState(false);
   /*
   label={el.label}
   LabelClassName={el.LabelClass}
@@ -37,7 +37,8 @@ function Step3({ children, steps, setSteps, dataBody, setDataBody }) {
   ];
 
   async function handleChangeFile(e) {
-    console.log(e)
+    setReadyReq(!readyReq)
+
     const file = e.target.files[0];
     setDataBody({ ...dataBody, DatosCaptura: { fileName: file.name } });
     if (file && file.type.substr(0, 5) === "image") {
@@ -51,8 +52,8 @@ function Step3({ children, steps, setSteps, dataBody, setDataBody }) {
         })
         .then((res) => {
          
-            
-            alert("Image upload successfully");
+          setReadyReq(!readyReq)
+            alert("Captura Subida");
           
         });
     } else if (file && file.type === "application/pdf") {
@@ -97,6 +98,8 @@ function Step3({ children, steps, setSteps, dataBody, setDataBody }) {
         titleStep="¡Ve y transfiere!"
         ubicationChildren="outside-form"
         bodyFormClass="mx-auto "
+        trigger={readyReq}
+        setTrigger={setReadyReq}
       >
         <Card className="card-resume-step3 mx-auto text-center ">
           <div className="mx-3">
