@@ -14,7 +14,7 @@ function FormsRemesas() {
   const location = useLocation();
   const from = location.state;
 
-  const {dataBody,setDataBody} = useContext(FormContext)
+  const {dataBody,setDataBody,dataSendMoney} = useContext(FormContext)
   function selectIcon(v){
     const peru='peruFlag.svg',ven='venezuelaFlag.svg',arg='argentinaFlag.svg'
     
@@ -41,7 +41,7 @@ function FormsRemesas() {
 
   return (<>
   {
-    from?.emisor?<>
+    from?.data==="true"?<>
     <Navbars />
     <section className="container mt-80">
    
@@ -58,13 +58,13 @@ function FormsRemesas() {
       <div className="mb-2">
       <p className="m-0 mx-5 ">Enviarás:</p>
         <span >
-          <img src="/svg/chile.svg" alt="" /> $ {from.emisor.value} CLP{" "}
+          <img src="/svg/chile.svg" alt="" /> $ {dataSendMoney.emisor.value} CLP{" "}
         </span>
       </div>
       <div>
       <p className="m-0  mx-5 ">Recibirás:</p>
         <span> 
-          <img src={`/svg/${selectIcon(from.receptor.country)}`} alt="" /> $ {from.receptor.value} {from.receptor.country}  {" "}
+          <img src={`/svg/${selectIcon(dataSendMoney.receptor.country)}`} alt="" /> $ {dataSendMoney.receptor.value} {dataSendMoney.receptor.country}  {" "}
         </span>
       </div>
     </Card>
@@ -85,13 +85,13 @@ function FormsRemesas() {
       <div className="mb-2">
       <p className="m-0 mx-5 ">Enviarás:</p>
         <span >
-          <img src="/svg/chile.svg" alt="" /> $ {from.emisor.value} CLP{" "}
+          <img src="/svg/chile.svg" alt="" /> $ {dataSendMoney.emisor.value} CLP{" "}
         </span>
       </div>
       <div>
       <p className="m-0  mx-5 ">Recibirás:</p>
         <span>
-          <img src="/svg/colombia.svg" alt="" /> $ {from.receptor.value} {from.receptor.country}{" "}
+          <img src="/svg/colombia.svg" alt="" /> $ {dataSendMoney.receptor.value} {dataSendMoney.receptor.country}{" "}
         </span>
       </div>
     </Card>

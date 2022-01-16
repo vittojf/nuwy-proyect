@@ -37,6 +37,29 @@ function DataContext({ children }) {
 const [buttonDisabled, setButtonDisabled] = useState(false);
   const [value, setValue] = useState(new Date());
  
+
+  function formatData(){
+    setDataBody({
+      DatosUsuario: {
+        email: "",
+        rut: "",
+        name: "",
+      },
+      DatosReceptor: {
+        tipoCuenta: "Ahorro",
+        name: "",
+        dni: "",
+        email: "",
+        banco: "",
+        nCuenta: "",
+      },
+      DatosCaptura: {},
+    })
+    setRate(null)
+  }
+
+
+
   useEffect(() => {
     const interval = setInterval(
       () => setValue(new Date()),
@@ -48,8 +71,6 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     }
   }, []);
 
-
-  
 useEffect(() => {
   if(value.toLocaleTimeString("es-CL",{
     timeZone: "America/Santiago",
@@ -70,11 +91,13 @@ useEffect(() => {
     second: "2-digit" // numeric
   })>='6:00:00 p. m.'){
     
-    setButtonDisabled(false)
+    setButtonDisabled(true)
 
   }
 
 }, [value]);
+
+
 
 
   const validateRut = () => {
@@ -93,7 +116,8 @@ useEffect(() => {
     rate,
     setRate,
     validateRut,
-    buttonDisabled
+    buttonDisabled,
+    formatData
   };
   return <FormContext.Provider value={datas}>{children}</FormContext.Provider>;
 }

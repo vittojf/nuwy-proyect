@@ -17,14 +17,18 @@
     border-style: none;
     border-radius: 8px;
     height: 100px ;
-    resize: none;
+    padding:0.25rem 1rem ;
+    min-height: 50px;
 }
 
 .form-none{
     border-style: none;
 }
 
-
+.sectionContact{
+    max-width: 1000px;
+    margin: auto;
+}
 
 
 @media (min-width: 576px) {
@@ -38,16 +42,7 @@
 
 @media (min-width: 992px) {  
   
-.sectionAnsweAndContact{
-    margin-left:10rem ;
-    margin-right: 10rem;
-}
 
-.sectionContact{
-    margin-left:7rem ;
-    margin-right: 7rem;
-}
- 
 
 }
 

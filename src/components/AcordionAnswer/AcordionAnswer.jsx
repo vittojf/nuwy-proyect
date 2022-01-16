@@ -7,7 +7,6 @@ function CustomToggle({ children, eventKey, refClick, setRefClick }) {
     setRefClick((prevData) => {
       let copyRow = prevData;
       let obj = copyRow.filter((el) => el.eventKey === eventKey);
-      console.log(obj);
 
       obj[0]["animation"] = !obj[0]["animation"];
       
@@ -18,7 +17,7 @@ function CustomToggle({ children, eventKey, refClick, setRefClick }) {
       return prevData;
     });
   });
-  console.log(refClick[Number(eventKey)].animation);
+
   return (
     <button
       type="button"

@@ -73,13 +73,17 @@ return res.status(200).send(req.file)
         }); 
       
     //  return res;
-  }catch (err) {console.log(err)}
+  }catch (err) {
+    return res.status(500).json(err)
+  }
 })
 
 app.post("/send-mail", cors(), async (req, res) => {
-  let body = req.body;
-  var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
-  let mailOptions = {
+  try{
+
+    let body = req.body;
+    var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
+    let mailOptions = {
     from: process.env.EMAIL,
     to:body.DatosUsuario.email,
     subject: `${body.DatosUsuario.name}, haz realizado una transferencia con Nuwy`,
@@ -87,7 +91,7 @@ app.post("/send-mail", cors(), async (req, res) => {
     context: body
 
   };
-
+  
   let mailOptionsNuwy = {
     from: process.env.EMAIL,
     to: process.env.EMAIL,
@@ -97,37 +101,74 @@ app.post("/send-mail", cors(), async (req, res) => {
     attachments : [{
       filename: "Header@3x.png",
       path:imagePath,        
-
-}]
+      
+    }]
   };
 
-
+  
   await transport.sendMail(mailOptions, (err, data) => {
     if (err) {
-      return log("Error", err);
+      return  res.status(500).json(err)
     } else {
-      return log("Correo enviado");
+      return res.status(200).send(req)
     }
   });
   await transport.sendMail(mailOptionsNuwy, (err, data) => {
     if (err) {
-      return log("Error", err);
+      return  res.status(500).json(err)
+      
     } else {
-      fs.unlinkSync(path)
-      return log("Correo enviado");
+      fs.unlinkSync(imagePath)
+      return res.status(200).send(req)
     }
   });
+  return res.status(200).send(req)
+  
+}catch (error) {
+  res.send(error);
+}
+});
+app.post("/send-mail-contact", async (req, res) => {
+
+  try{
+    let mailOptions = {
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
+      subject: `Han realizado una Pregunta`,
+      html: `<h5 style="font-size:15px">Recibiste un mensaje de:</h5>
+    
+     <p style="font-size:15px"><b> Email :</b> ${req.body.email}</p>
+     
+      <p style="font-size:15px"><b> Name:</b> ${req.body.name}</p>
+   
+      <p style="font-size:15px"><b>Message:</b> ${req.body.message}</p>`,
+    };
+    await transport.sendMail(mailOptions, (err, data) => {
+      if (err) {
+        
+        return res.status(500).json(err)
+    } else {
+      return res.status(200).send(req)
+      
+    }
+  })
+  return res.status(200).send(req)
+}catch (error) {
+  res.send(error);
+}
 
 });
 
+
 app.listen(process.env.PORT , (req,res) => {
-  console.log(process.env.PORT)
   console.log("server activo");
 });
 
 //
 /*
-
+PASSWORD=Dantestriffe2021**
+EMAIL=djimeneztaq@gmail.com
+PORT=4000
 
 //step 1
 

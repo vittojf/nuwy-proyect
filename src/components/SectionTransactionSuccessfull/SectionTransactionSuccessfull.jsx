@@ -1,3 +1,4 @@
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -5,9 +6,10 @@ import FormContext from "../../Context/dataContext";
 import Navbars from "../Navbars/Navbars";
 
 import SectionsNuwy from "../Sections/Sections";
+import FacturaPDF from "./PlantillaPDFSuccessFull";
 import "./sectionSuccessfull.css";
 function SectionTransactionSuccessfull() {
-  const { dataBody, rate, dataSendMoney } = useContext(FormContext);
+  const { dataBody, rate, dataSendMoney,formatData } = useContext(FormContext);
 
   return (
     <>
@@ -101,15 +103,19 @@ function SectionTransactionSuccessfull() {
               to={{
                 pathname: "/",
               }}
+              onClick={()=>formatData()}
               className="text-white btn btn btn-nuwy-steps mt-3 "
               >
               volver a inicio
             </Link>
           </div>
           <div className="col">
-            <button className="text-white btn btn-cancel-step mt-3 ">
+          <PDFDownloadLink document={<FacturaPDF dataConvert={dataSendMoney} dataUser={dataBody} rate={rate}/>} fileName="ComprobanteNuwy.pdf">
+          <button className="text-white btn btn-cancel-step mt-3 ">
               Descargar Comprobante
             </button>
+    </PDFDownloadLink>
+         
           </div>
         </div>
       </SectionsNuwy>

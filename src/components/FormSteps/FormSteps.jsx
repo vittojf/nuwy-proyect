@@ -23,12 +23,12 @@ function FormStep({
   trigger}) {
   const { dataBody, rate, dataSendMoney, setRes, validateRut } =
     useContext(FormContext);
-
+//https://nuwy-api-app.herokuapp.com/send-mail
   const sendMail = async (datos, datoEnvio,rates) => {
     let rate = {rate:rates}
     let body = { ...datos, ...datoEnvio,...rate };
     await axios
-      .post("https://nuwy-api-app.herokuapp.com/send-mail", body)
+      .post("http://localhost:4000/send-mail", body)
       .then((res) => {
         console.log(res);
       })
@@ -78,7 +78,7 @@ function FormStep({
             </div>
           </div>
 
-          <div class="flex-grow-1 mx-auto">
+          <div className="flex-grow-1 mx-auto">
             <div className={`formStep1  ${bodyFormClass} `}>
               <div className="flex-wrap flex-shrink-0  mx-1 ">
                 <div className="d-flex justify-content-center justify-content-lg-start  align-items-center ">
@@ -271,7 +271,8 @@ function FormStep({
                                 to="/successfullTransacction"
                                 disabled={true}
                                 onClick={() => {
-                                  sendMail(dataBody, dataSendMoney,rate);
+                                  sendMail(dataBody, dataSendMoney,rate)
+                                  
                                 }}
                                 state={{
                                   rate: rate,

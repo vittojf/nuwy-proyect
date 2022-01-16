@@ -26,10 +26,13 @@
   border-left: 2px white solid;
 }
 .nuwy-card-acordion {
+  
   background-color: unset;
   color: white;
   border: 1px solid white !important;
   border-radius: 8px;
+  max-width: 1400px;
+  margin: auto;
 }
 .header-nuwy-card {
   border: unset;

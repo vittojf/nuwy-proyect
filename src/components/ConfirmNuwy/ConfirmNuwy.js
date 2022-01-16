@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
@@ -71,7 +71,7 @@ setFullScreen(true)
           
         </Modal.Body>
         <Modal.Footer className="d-flex flex-nowrap justify-content-center">
-          <Link to="/sendMoney" className="btn btn-nuwy-modal"   state={ props.datasend}>
+          <Link to="/sendMoney" className="btn btn-nuwy-modal"   state={ {data:props.datasend}}>
 
             Aceptar y continuar
 
@@ -97,9 +97,11 @@ function ConfirmNuwy(props) {
       <button
         type="button"
         className="btn btn-send-nuwy "
+        disabled={props.buttonDisabled?true:!props.res?true:false}
         onClick={() => setModalShow(true)}
       >
-        Enviar Dinero
+          { !props.res?<Spinner animation="border" variant="dark"  />:'Enviar Dinero'}
+        
       </button>
 
       <MyVerticallyCenteredModal

@@ -35,7 +35,8 @@ const [readyReq, setReadyReq] = useState(false);
       fileName: nameImage,
     },
   ];
-
+ // http://localhost:4000/imageupload
+ //https://nuwy-api-app.herokuapp.com/imageupload
   async function handleChangeFile(e) {
     setReadyReq(true)
     setResImage(false);
@@ -48,7 +49,7 @@ const [readyReq, setReadyReq] = useState(false);
       const formData = new FormData();
       formData.append("avatar", file);
       axios
-        .post("https://nuwy-api-app.herokuapp.com/imageupload", formData, {
+        .post("http://localhost:4000/imageupload", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {

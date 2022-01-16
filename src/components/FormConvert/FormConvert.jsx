@@ -6,7 +6,7 @@ import FormContext from "../../Context/dataContext";
 import ListCountry from "./ListCountry/ListCountry";
 import { useOutsideAlerter } from "../../hooks/useOutsideAlerter";
 import ApiConvertRepository from "../../repository/apiConvert.repository";
-
+import NumberFormat from "react-number-format";
 //import ApiConvertRepository from '../../repository/apiConvert.repository'
 const repo = new ApiConvertRepository()
 function FormConvert() {
@@ -14,6 +14,7 @@ function FormConvert() {
 
   const [valueInput1, setValueInput1] = useState(1);
 
+const maxVal=500000;
   // const [c1, setC1] = useState();
   const [c2, setC2] = useState("COP");
 
@@ -25,7 +26,9 @@ function FormConvert() {
     data,
     setData,
     setRate,
-    rate
+    rate,
+    buttonDisabled,
+    formatData
   } = useContext(FormContext);
 
   const handleClassChange = (e) => {
@@ -71,7 +74,7 @@ function FormConvert() {
   function handleChangeVal(event, input) {
     let amount;
     if (input === "receptor") {
-      let { value, max } = event.target;
+      let { value } = event;
       if (value === 0 || value === "") {
         setValueInput1("");
 
@@ -85,7 +88,11 @@ function FormConvert() {
           },
         });
       } else {
-        value = Math.max(Math.min(Number(max), Number(value)));
+        value = Math.max(Math.min(Number(      res
+          ? parseFloat(
+            (maxVal * data.rates[c2].toFixed(3)).toFixed(3)
+            )
+            : maxVal), Number(value)));
 
         setValueInput1(
           parseFloat((value / data.rates[c2].toFixed(3)).toFixed(3))
@@ -101,7 +108,7 @@ function FormConvert() {
         });
       }
     } else if (input === "emisor") {
-      let { value, max } = event.target;
+      let { value } = event;
       if (value === 0 || value === "") {
         setValueInput1("");
 
@@ -115,7 +122,7 @@ function FormConvert() {
           },
         });
       } else {
-        value = Math.max(Math.min(Number(max), Number(value)));
+        value = Math.max(Math.min(Number(maxVal), Number(value)));
         setValueInput1(value);
 
         amount = parseFloat(
@@ -136,7 +143,6 @@ function FormConvert() {
     } else {
       repo.getData()
         .then((res) => {
-          console.log(res);
           setData(res);
           setRate(parseFloat(res.rates["COP"].toFixed(3)));
           setRes(true);
@@ -161,6 +167,8 @@ function FormConvert() {
         });
     }
   }, [res, setData, setDataSendMoney, setRate, setRes]);
+  
+  useEffect( formatData ,[])// eslint-disable-line react-hooks/exhaustive-deps
   /*
   const formatoNumber = (number) => {
     const exp = /(\d)(?=(\d{80})+(?!\d))/g;
@@ -185,7 +193,17 @@ function FormConvert() {
             <div className="position-absolute top-50 start-0 translate-middle-y ms-3 spanMoneyIcon">
               <span className=" icon-money">$</span>
             </div>
-            <input
+             <NumberFormat
+                 value={dataSendMoney.emisor.value ?? ""}
+              thousandSeparator="."
+              decimalSeparator=","
+              prefix=""
+              className="form-control form-control-nuwy-number  "
+              id="sendMoney"
+              displayType="input"
+              onValueChange={(e) => handleChangeVal(e, "emisor")}
+          />
+           {/* <input
               id="sendMoney"
               type="number"
               value={dataSendMoney.emisor.value ?? ""}
@@ -195,7 +213,7 @@ function FormConvert() {
               aria-label="Text input with dropdown button"
               onChange={(e) => handleChangeVal(e, "emisor")}
             />
-
+           */}
             <button className=" dropdown-nuwy " disabled type="button">
               <img src="/svg/bandera-chile.svg" alt="banderaChile" />
             </button>
@@ -223,24 +241,16 @@ function FormConvert() {
             <div className="position-absolute top-50 start-0 translate-middle-y ms-3 spanMoneyIcon">
               <span className=" icon-money">$</span>
             </div>
-            <input
-              type="number"
+            <NumberFormat
+                 value={dataSendMoney.receptor.value ?? ""}
+              thousandSeparator="."
+              decimalSeparator=","
+              prefix=""
               id="getMoney"
-              className="form-control form-control-nuwy-number   "
-              aria-label="Text input with dropdown button"
-              value={dataSendMoney.receptor.value ?? ""}
-              min={0}
-              
-              max={
-                res
-                ? parseFloat(
-                  (500000 * data.rates[c2].toFixed(3)).toFixed(3)
-                  )
-                  : 500000
-                }
-              onChange={(e) => handleChangeVal(e, "receptor")}
-            />
-
+              className="form-control form-control-nuwy-number  "
+              displayType="input"
+              onValueChange={(e) => handleChangeVal(e, "receptor")}
+          />
             <ListCountry
               handleClassChange={handleClassChange}
               wrapperRef={wrapperRef}
@@ -257,7 +267,7 @@ function FormConvert() {
     
           <div className="mt-4">
 
-        <ConfirmNuwy datasend={dataSendMoney} />
+        <ConfirmNuwy datasend={dataSendMoney.emisor.value&&dataSendMoney.receptor.value?"true":"false"} buttonDisabled={buttonDisabled} res={res} />
           </div>
         <div className="d-flex w-100 justify-content-center align-items-center spanSegurity ">
           <span>
