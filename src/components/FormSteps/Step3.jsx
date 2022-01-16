@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 //import TopNambedInput from "../TopNambedInput/TopNambedInput";
@@ -46,20 +45,7 @@ const [readyReq, setReadyReq] = useState(false);
     if (file && file.type.substr(0, 5) === "image") {
       setImage(file);
      
-      const formData = new FormData();
-      formData.append("avatar", file);
-      axios
-        .post("http://localhost:4000/imageupload", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
-        .then((res) => {
-         
-            setResImage(true);
-            setReadyReq(!readyReq)
-            alert("Captura Subida");
-          
-          
-        });
+    setResImage(true)
     } else if (file && file.type === "application/pdf") {
       setImage(file);
       setResImage(true);
@@ -98,6 +84,7 @@ const [readyReq, setReadyReq] = useState(false);
         resImage={resImage}
         steps={steps}
         setSteps={setSteps}
+        file={image}
         stepClass={"m-0 "}
         titleStep="¡Ve y transfiere!"
         ubicationChildren="outside-form"

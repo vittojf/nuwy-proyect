@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import FormContext from "../../Context/dataContext";
+import NumberFormat from "react-number-format";
 import TopNambedInput from "../TopNambedInput/TopNambedInput";
 import { toast, Toaster } from "react-hot-toast";
 import "./styles/FormStep1.css";
@@ -20,6 +21,7 @@ function FormStep({
   ubicationChildren,
   bodyFormClass,
   resImage,
+  file,
   trigger}) {
   const { dataBody, rate, dataSendMoney, setRes, validateRut } =
     useContext(FormContext);
@@ -27,13 +29,27 @@ function FormStep({
   const sendMail = async (datos, datoEnvio,rates) => {
     let rate = {rate:rates}
     let body = { ...datos, ...datoEnvio,...rate };
+    const formData = new FormData();
+    formData.append("avatar", file);
+ await  axios
+      .post("http://localhost:4000/imageupload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((res) => {
+       
+       //log(res)
+        
+        
+      }).catch(err=>{
+        //log(err)
+      })
     await axios
       .post("http://localhost:4000/send-mail", body)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+       // console.log(err);
       });
   };
   
@@ -111,8 +127,14 @@ function FormStep({
                 {numberStep === 3 && (
                   <div className="mx-auto mx-lg-0 mt-3 mt-lg-0" style={{ width: "100%" }}>
                     <h3 className="text-white text-center text-lg-start">
-                      ${dataSendMoney.emisor.value}{" "}
-                      {dataSendMoney.emisor.country}
+          $ <NumberFormat
+              value= {dataSendMoney.emisor.value}
+              style={{fontSize:'22pt'}}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> {dataSendMoney.emisor.country}
                     </h3>
                   </div>
                 )}
@@ -272,12 +294,6 @@ function FormStep({
                                 disabled={true}
                                 onClick={() => {
                                   sendMail(dataBody, dataSendMoney,rate)
-                                  
-                                }}
-                                state={{
-                                  rate: rate,
-                                  dataBody: dataBody,
-                                  dataSendMoney: dataSendMoney,
                                 }}
                               >
                                 Continuar

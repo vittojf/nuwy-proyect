@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FormContext from "../../Context/dataContext";
 import Navbars from "../Navbars/Navbars";
-
+import NumberFormat from "react-number-format";
 import SectionsNuwy from "../Sections/Sections";
 import FacturaPDF from "./PlantillaPDFSuccessFull";
 import "./sectionSuccessfull.css";
@@ -32,14 +32,27 @@ function SectionTransactionSuccessfull() {
           <div className="d-flex text-white justify-content-center">
             <div className="text-center mount-nuwy ">
               <p className=" m-0">Monto transferido</p>
-              <h3>${dataSendMoney?.emisor.value} CLP</h3>
+              <h3>$<NumberFormat
+              value= {dataSendMoney?.emisor.value}
+              style={{fontSize:'20px'}}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> CLP</h3>
             </div>
             <img src="/svg/rowRightCheck.svg" className="mx-3" alt="" />
             <div className="text-center mount-nuwy">
               <p className=" m-0">Receptor recibirá</p>
               <h3>
-                ${dataSendMoney?.receptor.value}{" "}
-                {dataSendMoney?.receptor.country}
+                $<NumberFormat
+              value= {dataSendMoney?.receptor.value}
+              style={{fontSize:'20px'}}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              />{" "}{dataSendMoney?.receptor.country}
               </h3>
             </div>
           </div>
@@ -65,33 +78,56 @@ function SectionTransactionSuccessfull() {
             <h6 className="mt-3">Detalles de la transacción</h6>
           </div>
           <div className="  body-list-data mx-auto ">
-            <div className="row row-cols-1 row-cols-lg-2  mx-1 ">
-              <div className="col d-flex justify-content-between">
+            <div className="row row-cols-1 row-cols-lg-2  mx-4 mx-lg-1">
+              <div className="col d-flex justify-content-between mb-2 mt-0">
                 <b>Enviaste</b>
-                <p>${dataSendMoney?.emisor.value} CLP</p>
+                <span>
+                   $<NumberFormat
+              value= {dataSendMoney?.emisor.value}
+      
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+              
+              /> CLP
+              </span> 
               </div>
-              <div className="col d-flex justify-content-between">
+              <div className="col d-flex justify-content-between mb-2 mt-lg-0 mt-2">
                 <b>Recibirá</b>
-                <p>
-                  ${dataSendMoney?.receptor.value}{" "}
-                  {dataSendMoney?.receptor.country}
-                </p>
+              
+                 <span>
+                   $<NumberFormat
+              value={dataSendMoney?.receptor.value}
+      
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+              
+              /> {dataSendMoney?.receptor.country}
+              </span> 
+           
               </div>
-              <div className="col d-flex justify-content-between">
+              <div className="col d-flex justify-content-between my-2">
                 <b>Tipo de Cambio</b>
-                <p>{rate}</p>
+               <NumberFormat
+              value= {rate}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator="," 
+            
+              />
               </div>
-              <div className="col d-flex justify-content-between">
+              <div className="col d-flex justify-content-between my-2 ">
                 <b>Banco</b>
-                <p>{dataBody?.DatosReceptor.banco}</p>
+                <span >{dataBody?.DatosReceptor.banco}</span>
               </div>
-              <div className="col d-flex justify-content-between">
+              <div className="col d-flex justify-content-between my-2">
                 <b>Tipo de Cuenta</b>
-                <p>{dataBody?.DatosReceptor.tipoCuenta}</p>
+                <span>{dataBody?.DatosReceptor.tipoCuenta}</span>
               </div>
-              <div className="col d-flex justify-content-between">
+              <div className="col d-flex justify-content-between mt-2 mb-3">
                 <b>N° de cuenta</b>
-                <p>{dataBody?.DatosReceptor.nCuenta}</p>
+                <span>{dataBody?.DatosReceptor.nCuenta}</span>
               </div>
             </div>
           </div>
@@ -103,6 +139,7 @@ function SectionTransactionSuccessfull() {
               to={{
                 pathname: "/",
               }}
+              state={{formatData:true}}
               onClick={()=>formatData()}
               className="text-white btn btn btn-nuwy-steps mt-3 "
               >

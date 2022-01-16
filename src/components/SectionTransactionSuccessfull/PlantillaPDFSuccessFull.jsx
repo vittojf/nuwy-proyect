@@ -1,5 +1,6 @@
 import React from 'react'
 import { Page, View, Image, Text, StyleSheet, Document } from '@react-pdf/renderer'
+import NumberFormat from "react-number-format";
 import { Font } from '@react-pdf/renderer'
 Font.register({
     family: 'Roboto',
@@ -157,7 +158,13 @@ const FacturaPDF = ({dataConvert,dataUser,rate}) => {
                             <View >
 
                                 <Text style={styles.text}>Monto transferido</Text>
-                                <View style={{ margin: 'auto' }}><Text style={styles.textAmount}>${dataConvert.emisor.value} CLP</Text></View>
+                                <View style={{ margin: 'auto' }}><Text style={styles.textAmount}>$<NumberFormat
+              value= {dataConvert.emisor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> CLP</Text></View>
                             </View>
 
                             <View>
@@ -166,7 +173,14 @@ const FacturaPDF = ({dataConvert,dataUser,rate}) => {
                             <View>
 
                                 <Text style={styles.text}>Receptor recibirá</Text>
-                                <View style={{ margin: 'auto' }} ><Text style={styles.textAmount}>${dataConvert.receptor.value} COP</Text></View>
+                                <View style={{ margin: 'auto' }} ><Text style={styles.textAmount}>$
+                                <NumberFormat
+              value= {dataConvert.receptor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> COP</Text></View>
                             </View>
 
                         </View>
@@ -199,12 +213,24 @@ const FacturaPDF = ({dataConvert,dataUser,rate}) => {
                                 <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: "row", flexWrap: 'wrap', paddingRight: '10px' }}>
 
                                     <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 14, fontFamily: 'Roboto', fontWeight: 'bold' }}>Enviaste</Text></View>
-                                    <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>$ {dataConvert.emisor.value} CLP</Text></View>
+                                    <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>$ <NumberFormat
+              value= {dataConvert.emisor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> CLP</Text></View>
 
 
  
                                     <View style={{ width: '50%', marginTop: '15px' }}><Text style={{ textAlign: 'start', fontSize: 14, fontFamily: 'Roboto', fontWeight: 'bold' }}>Recibirá</Text></View>
-                                    <View style={{ width: '50%', marginTop: '15px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>$ {dataConvert.receptor.value} {dataConvert.receptor.country}</Text></View>
+                                    <View style={{ width: '50%', marginTop: '15px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>$ <NumberFormat
+              value= {dataConvert.receptor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> {dataConvert.receptor.country}</Text></View>
 
                                     <View style={{ width: '50%', marginTop: '15px' }}><Text style={{ textAlign: 'start', fontSize: 14, fontFamily: 'Roboto', fontWeight: 'bold' }}>Tipo de cuenta</Text></View>
                                     <View style={{ width: '50%', marginTop: '15px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>{dataUser.DatosReceptor.tipoCuenta}</Text></View>
@@ -213,7 +239,13 @@ const FacturaPDF = ({dataConvert,dataUser,rate}) => {
                                 <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: "row", flexWrap: 'wrap' }}>
 
                                     <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 14, fontFamily: 'Roboto', fontWeight: 'bold' }}>Tipo de cambio</Text></View>
-                                    <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}>{rate}</Text></View>
+                                    <View style={{ width: '50%', marginTop: '20px' }}><Text style={{ textAlign: 'start', fontSize: 12 }}><NumberFormat
+              value= {rate}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /></Text></View>
 
 
 

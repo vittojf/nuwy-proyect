@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import { Link, Navigate, useLocation } from "react-router-dom";
+import NumberFormat from "react-number-format";
 import Card from "../components/Card/Card";
 
 import Step1 from "../components/FormSteps/Step1";
@@ -36,8 +37,6 @@ function FormsRemesas() {
     
     }
 
-  
-
 
   return (<>
   {
@@ -58,13 +57,24 @@ function FormsRemesas() {
       <div className="mb-2">
       <p className="m-0 mx-5 ">Enviarás:</p>
         <span >
-          <img src="/svg/chile.svg" alt="" /> $ {dataSendMoney.emisor.value} CLP{" "}
+          <img src="/svg/chile.svg" alt="" /> $ <NumberFormat
+              value={dataSendMoney.emisor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+              />  CLP{" "}
         </span>
       </div>
       <div>
       <p className="m-0  mx-5 ">Recibirás:</p>
         <span> 
-          <img src={`/svg/${selectIcon(dataSendMoney.receptor.country)}`} alt="" /> $ {dataSendMoney.receptor.value} {dataSendMoney.receptor.country}  {" "}
+          <img src={`/svg/${selectIcon(dataSendMoney.receptor.country)}`} alt="" /> $  <NumberFormat
+              value={dataSendMoney.receptor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> {dataSendMoney.receptor.country}  
         </span>
       </div>
     </Card>
@@ -84,14 +94,25 @@ function FormsRemesas() {
       >
       <div className="mb-2">
       <p className="m-0 mx-5 ">Enviarás:</p>
-        <span >
-          <img src="/svg/chile.svg" alt="" /> $ {dataSendMoney.emisor.value} CLP{" "}
+      <span >
+          <img src="/svg/chile.svg" alt="" /> $ <NumberFormat
+              value={dataSendMoney.emisor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+              />  CLP{" "}
         </span>
       </div>
       <div>
       <p className="m-0  mx-5 ">Recibirás:</p>
-        <span>
-          <img src="/svg/colombia.svg" alt="" /> $ {dataSendMoney.receptor.value} {dataSendMoney.receptor.country}{" "}
+      <span> 
+          <img src={`/svg/${selectIcon(dataSendMoney.receptor.country)}`} alt="" /> $  <NumberFormat
+              value={dataSendMoney.receptor.value}
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            
+              /> {dataSendMoney.receptor.country}  
         </span>
       </div>
     </Card>

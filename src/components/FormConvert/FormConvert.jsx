@@ -7,13 +7,14 @@ import ListCountry from "./ListCountry/ListCountry";
 import { useOutsideAlerter } from "../../hooks/useOutsideAlerter";
 import ApiConvertRepository from "../../repository/apiConvert.repository";
 import NumberFormat from "react-number-format";
+import { useLocation } from "react-router-dom";
 //import ApiConvertRepository from '../../repository/apiConvert.repository'
 const repo = new ApiConvertRepository()
 function FormConvert() {
   const [dropwdown, setDropwdown] = useState(false);
 
   const [valueInput1, setValueInput1] = useState(1);
-
+const location = useLocation()
 const maxVal=500000;
   // const [c1, setC1] = useState();
   const [c2, setC2] = useState("COP");
@@ -103,8 +104,8 @@ const maxVal=500000;
 
         setDataSendMoney({
           ...dataSendMoney,
-          emisor: { value: amount, country: "CLP" },
-          receptor: { value: value },
+          emisor: { ...dataSendMoney.emisor, value: amount, country: "CLP" },
+          receptor: { ...dataSendMoney.receptor, value: value },
         });
       }
     } else if (input === "emisor") {
@@ -130,8 +131,8 @@ const maxVal=500000;
         );
         setDataSendMoney({
           ...dataSendMoney,
-          emisor: { value: value, country: "CLP" },
-          receptor: { value: amount },
+          emisor: {...dataSendMoney.emisor, value: value, country: "CLP" },
+          receptor: {...dataSendMoney.receptor, value: amount },
         });
       }
     }
@@ -151,6 +152,7 @@ const maxVal=500000;
             emisor: {
               country: "CLP",
               value: 1,
+              countryName:'Chile',
 
 
             },
@@ -167,8 +169,22 @@ const maxVal=500000;
         });
     }
   }, [res, setData, setDataSendMoney, setRate, setRes]);
-  
-  useEffect( formatData ,[])// eslint-disable-line react-hooks/exhaustive-deps
+//console.log(location)
+  useEffect(() => {
+    if(location.state!==null){
+
+      if(location.state?.formatData===true){
+        formatData()
+      }else{
+        return
+      }
+    }else{
+
+      return
+    }
+  }, [location]);// eslint-disable-line react-hooks/exhaustive-deps
+
+
   /*
   const formatoNumber = (number) => {
     const exp = /(\d)(?=(\d{80})+(?!\d))/g;

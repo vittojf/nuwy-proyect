@@ -20,18 +20,21 @@ function DataContext({ children }) {
   });
   const [dataSendMoney, setDataSendMoney] = useState({
     emisor: {
-      country: "",
-      value: "",
+      country: "CLP",
+      value: 1,
       countryName: "",
+
     },
     receptor: {
-      country: "",
+      country: "COP",
+      countryName:'Colombia',
+
       value: "",
-      countryName: "",
     },
+  
   });
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [rate, setRate] = useState();
   const [res, setRes] = useState(false);
 const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -56,6 +59,8 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
       DatosCaptura: {},
     })
     setRate(null)
+
+    setRes(false)
   }
 
 
