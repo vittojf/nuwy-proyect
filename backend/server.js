@@ -99,7 +99,7 @@ app.post("/send-mail", cors(), async (req, res) => {
     template: "nuwySend",
     context: body,
     attachments : [{
-      filename: "Header@3x.png",
+      filename:body.dataBody.DatosCaptura.fileName ,
       path:imagePath,        
       
     }]
