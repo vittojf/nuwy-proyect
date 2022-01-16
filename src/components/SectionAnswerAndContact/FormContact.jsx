@@ -43,7 +43,7 @@ function  handleOnChange(e,name){
 async function sendMessageContact(){
 setRes(true)
   axios
-        .post("http://localhost:4000/send-mail-contact", data)
+        .post("https://nuwy-api-app.herokuapp.com/send-mail-contact", data)
         .then((res) => {
           setRes(false) 
             alert("Mensaje Enviado");

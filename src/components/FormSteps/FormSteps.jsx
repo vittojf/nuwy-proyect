@@ -26,13 +26,14 @@ function FormStep({
   const { dataBody, rate, dataSendMoney, setRes, validateRut } =
     useContext(FormContext);
 //https://nuwy-api-app.herokuapp.com/send-mail
+//http://localhost:4000/
   const sendMail = async (datos, datoEnvio,rates) => {
     let rate = {rate:rates}
     let body = { ...datos, ...datoEnvio,...rate };
     const formData = new FormData();
     formData.append("avatar", file);
  await  axios
-      .post("http://localhost:4000/imageupload", formData, {
+      .post("https://nuwy-api-app.herokuapp.com/imageupload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
@@ -44,7 +45,7 @@ function FormStep({
         //log(err)
       })
     await axios
-      .post("http://localhost:4000/send-mail", body)
+      .post("https://nuwy-api-app.herokuapp.com/send-mail", body)
       .then((res) => {
         //console.log(res);
       })
