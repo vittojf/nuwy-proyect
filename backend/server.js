@@ -45,7 +45,7 @@ const storage = multer.diskStorage({
   }
 })
 
-app.post('/imageupload', async (req, res) => {	
+app.post('/imageupload', async (req, res,next) => {	
   try {
       // 'avatar' is the name of our file input field in the HTML form
 
@@ -78,7 +78,7 @@ return res.status(200).send(req.file)
   }
 })
 
-app.post("/send-mail", cors(), async (req, res) => {
+app.post("/send-mail", cors(), async (req, res,next) => {
 
     let body =  req.body;
     var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
@@ -128,7 +128,7 @@ app.post("/send-mail", cors(), async (req, res) => {
   
 
 });
-app.post("/send-mail-contact", async (req, res) => {
+app.post("/send-mail-contact", async (req, res,next) => {
 
   try{
     let mailOptions = {
@@ -160,7 +160,7 @@ app.post("/send-mail-contact", async (req, res) => {
 });
 
 
-app.listen(process.env.PORT , (req,res) => {
+app.listen(process.env.PORT||443 , (req,res) => {
   console.log("server activo");
 });
 
