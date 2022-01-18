@@ -96,7 +96,7 @@ useEffect(() => {
     second: "2-digit" // numeric
   })>='6:00:00 p. m.'){
     
-    setButtonDisabled(true)
+    setButtonDisabled(false)
 
   }
 

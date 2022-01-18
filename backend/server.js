@@ -8,7 +8,7 @@ const hbs = require("nodemailer-express-handlebars");
 const path = require("path");
 const multer = require("multer"); 
 const fs = require('fs')
-const log = console.log;
+
 
 
 
@@ -79,9 +79,8 @@ return res.status(200).send(req.file)
 })
 
 app.post("/send-mail", cors(), async (req, res) => {
-  try{
 
-    let body = req.body;
+    let body =  req.body;
     var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
     let mailOptions = {
     from: process.env.EMAIL,
@@ -91,6 +90,7 @@ app.post("/send-mail", cors(), async (req, res) => {
     context: body
 
   };
+
   
   let mailOptionsNuwy = {
     from: process.env.EMAIL,
@@ -99,7 +99,7 @@ app.post("/send-mail", cors(), async (req, res) => {
     template: "nuwySend",
     context: body,
     attachments : [{
-      filename:body.dataBody.DatosCaptura.fileName ,
+      filename:body.DatosCaptura.fileName ,
       path:imagePath,        
       
     }]
@@ -115,18 +115,18 @@ app.post("/send-mail", cors(), async (req, res) => {
   });
   await transport.sendMail(mailOptionsNuwy, (err, data) => {
     if (err) {
+      fs.unlinkSync(imagePath)
       return  res.status(500).json(err)
       
     } else {
       fs.unlinkSync(imagePath)
       return res.status(200).send(req)
     }
-  });
-  return res.status(200).send(req)
+  })
+
+  return res.status(200).send({message:'Correo Enviado!'})
   
-}catch (error) {
-  res.send(error);
-}
+
 });
 app.post("/send-mail-contact", async (req, res) => {
 

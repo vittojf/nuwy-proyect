@@ -37,21 +37,23 @@ function FormStep({
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
+       if(res.status===200){
+
        
-       //log(res)
-        
-        
+        }
       }).catch(err=>{
         //log(err)
-      })
-    await axios
-      .post("https://nuwy-api-app.herokuapp.com/send-mail", body)
+      }).finally(()=>{
+
+      axios
+        .post("https://nuwy-api-app.herokuapp.com/send-mail", body)
       .then((res) => {
-        //console.log(res);
+  //      console.log(res);
       })
       .catch((err) => {
-       // console.log(err);
+        // console.log(err);
       });
+    })
   };
   
 
