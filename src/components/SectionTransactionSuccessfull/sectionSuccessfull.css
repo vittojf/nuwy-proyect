@@ -27,11 +27,17 @@
  
 
 }
+.font-text-nwy {
+    font-size: 18px !important;
+}
+.body-list-data span {
+font-size: 11px !important;
+}
 
 .card-resume-sucessfull {
     border-radius: 8px !important;
     background-color: white !important;
-    max-width: 388px;
+    max-width: 428px;
     min-width: 295px ;
     color: #18305D;
   }

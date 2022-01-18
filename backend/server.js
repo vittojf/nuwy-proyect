@@ -4,6 +4,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const smtpTransport = require('nodemailer-smtp-transport');
 const hbs = require("nodemailer-express-handlebars");
 const path = require("path");
 const multer = require("multer"); 
@@ -14,16 +15,31 @@ const fs = require('fs')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
- 
+app.use((req, res, next) => {
+
+  // Dominio que tengan acceso (ej. 'http://example.com')
+     res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  // Metodos de solicitud que deseas permitir
+     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  
+  // Encabecedados que permites (ej. 'X-Requested-With,content-type')
+     res.setHeader('Access-Control-Allow-Headers', '*');
+  
+  next();
+  })
 app.use(cors());
 
-const transport = nodemailer.createTransport({
+const transport = nodemailer.createTransport(smtpTransport({
   service: "gmail",
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASSWORD,
   },
-});
+}));
 transport.use(
   "compile",
   hbs({
@@ -36,6 +52,14 @@ transport.use(
     extName: ".handlebars",
   })
 );
+
+transport.verify(function (error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, './public_html/', 'uploads'),
@@ -74,15 +98,18 @@ return res.status(200).send(req.file)
       
     //  return res;
   }catch (err) {
-    return res.status(500).json(err)
+    return res.status(500).send(err)
   }
 })
 
 app.post("/send-mail", cors(), async (req, res,next) => {
 
     let body =  req.body;
-    var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
-    let mailOptions = {
+   
+  
+try{
+
+  let mailOptions = {
     from: process.env.EMAIL,
     to:body.DatosUsuario.email,
     subject: `${body.DatosUsuario.name}, haz realizado una transferencia con Nuwy`,
@@ -91,7 +118,18 @@ app.post("/send-mail", cors(), async (req, res,next) => {
 
   };
 
-  
+  await transport.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      res.status(500)
+      throw (err);
+    } 
+  });
+}catch(err){
+  res.json(err);
+}
+
+try{
+  var imagePath = path.join(__dirname, '/public_html/uploads/'+body.DatosCaptura.fileName);
   let mailOptionsNuwy = {
     from: process.env.EMAIL,
     to: process.env.EMAIL,
@@ -105,26 +143,22 @@ app.post("/send-mail", cors(), async (req, res,next) => {
     }]
   };
 
-  
-  await transport.sendMail(mailOptions, (err, data) => {
-    if (err) {
-      return  res.status(500).json(err)
-    } else {
-      return res.status(200).send(req)
-    }
-  });
   await transport.sendMail(mailOptionsNuwy, (err, data) => {
     if (err) {
       fs.unlinkSync(imagePath)
-      return  res.status(500).json(err)
+      res.status(500)
+      throw (err);
       
     } else {
       fs.unlinkSync(imagePath)
-      return res.status(200).send(req)
+      return res.status(200).send('Correo Enviado!')
     }
   })
-
-  return res.status(200).send({message:'Correo Enviado!'})
+  
+}catch(err){
+  res.json(err);
+}
+  
   
 
 });
@@ -146,21 +180,21 @@ app.post("/send-mail-contact", async (req, res,next) => {
     await transport.sendMail(mailOptions, (err, data) => {
       if (err) {
         
-        return res.status(500).json(err)
+        res.status(500)
+        throw (err);
     } else {
-      return res.status(200).send(req)
+      return res.status(200).send('Correo Enviado!')
       
     }
   })
-  return res.status(200).send(req)
 }catch (error) {
-  res.send(error);
+  res.json(error);
 }
 
 });
 
 
-app.listen(process.env.PORT||443 , (req,res) => {
+app.listen(process.env.PORT||80 , (req,res) => {
   console.log("server activo");
 });
 

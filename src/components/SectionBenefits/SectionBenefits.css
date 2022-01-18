@@ -3,8 +3,8 @@
 }
 
 .text-size-benefits-card{
-font-size: 13px;
-line-height: 15.23px !important;
+font-size: 15px;
+line-height: 21px !important;
 }
 
 .text-weight-normal{
@@ -36,22 +36,34 @@ height: 48px !important;
 
 @media (min-width: 576px) {  }
 
-@media (min-width: 768px) {  }
+@media (min-width: 768px) { 
+    .h-card{
+        height: 180px !important;
+    }
+    
+ }
 
 @media (min-width: 992px) {  
     .benefitsSection{
-        padding:0 98px;
+        padding:0 10px;
     }
-    
+    .h-card{
+        height: 260px !important;
+    }
     
 }
 
 @media (min-width: 1200px) { 
-
-   
+  
+    .h-card{
+        height: 250px !important;
+    }
+ 
  }
 
 @media (min-width: 1400px) {
-
-   
+    .h-card{
+        height: 240px !important;
+    }
+ 
   }

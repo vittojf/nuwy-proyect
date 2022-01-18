@@ -73,7 +73,7 @@ function SectionTransactionSuccessfull() {
             </p>
           </div>
         </div>
-        <Card className="card-resume-sucessfull  text-center mx-auto ">
+        <Card className="card-resume-sucessfull  text-center mx-auto">
           <div className="mx-3">
             <h6 className="mt-3">Detalles de la transacción</h6>
           </div>
@@ -147,8 +147,8 @@ function SectionTransactionSuccessfull() {
             </Link>
           </div>
           <div className="col">
-          <PDFDownloadLink document={<FacturaPDF dataConvert={dataSendMoney} dataUser={dataBody} rate={rate}/>} fileName="ComprobanteNuwy.pdf">
-          <button className="text-white btn btn-cancel-step mt-3 ">
+          <PDFDownloadLink  document={<FacturaPDF dataConvert={dataSendMoney} dataUser={dataBody} rate={rate}/>} fileName="ComprobanteNuwy.pdf">
+          <button className="text-white btn btn-cancel-step mt-3 font-text-nwy">
               Descargar Comprobante
             </button>
     </PDFDownloadLink>

@@ -68,7 +68,9 @@ color: white;
     overflow-x: hidden !important; 
 
 }
-
+.stepsNuwy p{
+line-height: 21px !important;
+}
 
 .puntosStyleStep{
     display:none;

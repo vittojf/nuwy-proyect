@@ -19,13 +19,13 @@ function SectionBenefits() {
             alt="Shield"
             animation="fade-up"
           >
-            <div className="mt-1">
+            <div className="mt-1 d-flex flex-wrap align-items-center justify-content-center">
               <div className=" mb-2 mx-4">
                 <h3 className=" title-size text-center roboto-bold">
                   Pensamos primero en tu seguridad
                 </h3>
               </div>
-              <div className="text-size-benefits-card text-center mx-2">
+              <div className="text-size-benefits-card text-center mx-2 ">
                 <p>
                   Todas nuestras transferencias son seguras, confiables y
                   rápidas, evita estafas y transfiere con nosotros{" "}
@@ -41,13 +41,13 @@ function SectionBenefits() {
             alt="Shield"
             animation="fade-up"
           >
-            <div className="mt-3">
+            <div className="mt-3 d-flex flex-wrap align-items-center justify-content-center">
               <div className=" mb-2 mx-4">
                 <h3 className=" title-size text-center roboto-bold">
                   Pensamos en tu economía
                 </h3>
               </div>
-              <div className="text-size-benefits-card mx-4-5 text-center">
+              <div className="text-size-benefits-card mx-4-5 text-center ">
                 <p>
                   No cobramos comisión, nuestras tasas son más bajos que el
                   común del mercado
@@ -64,7 +64,7 @@ function SectionBenefits() {
             alt="Shield"
             animation="fade-up"
           >
-            <div className="mt-3">
+            <div className="mt-3 d-flex flex-wrap align-items-center justify-content-center">
               <div className=" mb-2 mx-5">
                 <h3 className=" title-size text-center roboto-bold">
                   Pensamos en tu tiempo
