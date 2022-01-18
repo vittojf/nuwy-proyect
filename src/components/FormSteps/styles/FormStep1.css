@@ -3,7 +3,12 @@
   font-weight: 400;
   font-size: 11px;
 }
-
+.fontTitleSteps{
+  font-size: 17px !important;
+}
+.fontTextSteps{
+  font-size: 15px !important;
+}
 .btn-nuwy-steps {
   background-color: #5dad1f !important;
   color: #ffffff !important;

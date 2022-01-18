@@ -235,7 +235,7 @@ const maxVal=500000;
             </button>
           </div>
           <div className="row row-cols-1">
-            <span className="span-nuwy">
+            <span className="span-nuwy font-size-nuwy">
               Te damos:{" "}
               <b>
                 {" "}
@@ -243,7 +243,7 @@ const maxVal=500000;
               </b>{" "}
               por <b>CLP</b>
             </span>
-            <span className="span-nuwy">
+            <span className="span-nuwy font-size-nuwy" >
               Monto máximo a transferir: <b>$500.000 CLP</b>{" "}
             </span>
           </div>
@@ -275,7 +275,7 @@ const maxVal=500000;
               handleChangeCountry={handleChangeCountry}
             />
           </div>
-          <span className="span-nuwy">
+          <span className="span-nuwy font-size-nuwy">
             Tu envío llegará a mas tardar en 24 horas
           </span>
         </article>
@@ -290,7 +290,7 @@ const maxVal=500000;
             <img src="/svg/lock.svg" alt="banderaChile" className="me-1" />
           </span>
 
-          <span className="fs-8 ms-2 mt-1">Esta es una plataforma segura</span>
+          <span className="fs-8 ms-2 mt-1 font-size-nuwy" >Esta es una plataforma segura</span>
         </div>
         </article>
               </div>

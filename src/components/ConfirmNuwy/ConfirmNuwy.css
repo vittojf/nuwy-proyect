@@ -76,6 +76,10 @@ border-radius: 8px !important;
     font-weight: 500 !important;
     font-size: 15px !important;
     border-radius: 8px !important;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 .btn-nuwy-modal:hover{
     background-color: #4b8c1a !important;

@@ -20,7 +20,7 @@ const [readyReq, setReadyReq] = useState(false);
   const inputGroup = [
     {
       label: "Sube tu Captura",
-      labelClass: "text-white ",
+      labelClass: "text-white fontTextSteps",
       inputClass: "text-white mt-1 mb-4 input-file",
       id: "name",
       type: "file",

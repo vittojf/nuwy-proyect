@@ -13,8 +13,8 @@ function FormStep1({ children, steps, setSteps, dataBody, setDataBody }) {
   const inputGroup = [
     {
       label: "Nombre y Apellido",
-      labelClass: "text-white ",
-      inputClass: " mt-1 form-step-1 col",
+      labelClass: "text-white fontTextSteps ",
+      inputClass: " mt-1 form-step-1 col ",
       id: "name",
       name: "name",
       value:dataBody.DatosUsuario.name??'',
@@ -24,7 +24,7 @@ function FormStep1({ children, steps, setSteps, dataBody, setDataBody }) {
     },
     {
       label: "RUT",
-      labelClass: "text-white",
+      labelClass: "text-white fontTextSteps",
       inputClass: "mt-1 form-step-1 col",
       id: "rut",
 
@@ -37,7 +37,7 @@ function FormStep1({ children, steps, setSteps, dataBody, setDataBody }) {
     },
     {
       label: "Correo Electronico",
-      labelClass: "text-white ",
+      labelClass: "text-white fontTextSteps ",
       inputClass: " mt-1 form-step-1 col",
       id: "email",
       name: "email",

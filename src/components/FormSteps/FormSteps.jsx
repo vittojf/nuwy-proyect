@@ -117,10 +117,10 @@ function FormStep({
                         : "body ms-12px ms-lg-0   text-white text-start text-lg-start "
                     }
                   >
-                    <h6 className=" roboto-bold">{titleStep}</h6>
+                    <h6 className=" roboto-bold fontTitleSteps">{titleStep}</h6>
                     {textStep ? (
                       <div className="">
-                        <p className="text-body-form text-height">{textStep}</p>
+                        <p className="text-body-form text-height fontTextSteps">{textStep}</p>
                       </div>
                     ) : (
                       ""
@@ -145,7 +145,7 @@ function FormStep({
               {numberStep === 3 && (
                 <p
                   className="text-white mx-auto mx-lg-0 text-center text-lg-start "
-                  style={{ fontSize: "12px" }}
+                  style={{ fontSize: "15px" }}
                 >
                   Transfiere desde cualquier cuenta bancaria a la cuenta
                   bancaria de Nuwy

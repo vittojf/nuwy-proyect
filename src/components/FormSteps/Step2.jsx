@@ -25,7 +25,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
   const inputGroup = [
     {
       label: "Nombre y Apellido",
-      labelClass: "text-white",
+      labelClass: "text-white fontTextSteps",
       inputClass: " mt-1 form-step-1",
       id: "name",
       type: "text",
@@ -37,7 +37,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
     },
     {
       label: "Numero de identificación",
-      labelClass: "text-white",
+      labelClass: "text-white fontTextSteps",
       inputClass: "mt-1 form-step-1",
       id: "dni",
       textSpan: "DNI - CÉDULA - RUT",
@@ -51,7 +51,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
     },
     {
       label: "Correo Electronico",
-      labelClass: "text-white",
+      labelClass: "text-white fontTextSteps",
       inputClass: " mt-1 form-step-1",
       name: "email",
       value: dataBody.DatosReceptor.email ?? "",
@@ -174,7 +174,7 @@ function Step2({ children, steps, setSteps, dataBody, setDataBody }) {
         <div className="col">
           <TopNambedInput
             label="Numero de Cuenta"
-            labelClassName="text-white mt-4"
+            labelClassName="text-white mt-4 fontTextSteps"
             inputClassName=" form-step-1"
             id="nCuenta"
             type="number"

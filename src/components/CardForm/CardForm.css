@@ -199,8 +199,8 @@ transition: all 250ms !important ;
 }
 
 .cardNuwy{
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left:16px ;
+  margin-right:16px ;
 }
 
 @keyframes slideIn {
@@ -247,14 +247,14 @@ transition: all 250ms !important ;
 @media (min-width: 992px) {  
 
   .cardNuwy{
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left:3rem ;
+  margin-right:3rem ;
     margin-top: 160px !important;
     margin-bottom: 160px !important;
 
   }
   .puntosStyle{
-    transform: translate(-70%, -35%) !important;
+    transform: translate(-80%, -35%) !important;
     
   z-index: -100 !important;
     left:100%;
@@ -277,7 +277,22 @@ transition: all 250ms !important ;
 }
 
 @media (min-width: 1200px) { 
-  
+  .cardNuwy{
+    margin-left:10rem ;
+  margin-right:10rem ;
+}
  }
 
-@media (min-width: 1400px) {  }
+@media (min-width: 1400px) {
+  .cardNuwy{
+    margin-left:10rem ;
+  margin-right:10rem ;
+}
+  }
+
+  @media (min-width: 1600px) {
+    .cardNuwy{
+      margin-left:18rem !important;
+    margin-right:18rem !important;
+  }
+    }

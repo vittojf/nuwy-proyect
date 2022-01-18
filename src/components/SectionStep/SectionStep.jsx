@@ -10,7 +10,7 @@ const SectionStep = () => {
   return (
     <section className=" bg-section-step section-step" id="stepsSection">
       <article className=" mb-5 mx-3 px-2 section-body-step position-relative " >
-        <div className=" mb-5 mx-4 mt-1" data-aos="fade">
+        <div className=" mb-5 mt-1 mx-auto textTitleNuwySteps" data-aos="fade">
           <h3 className=" title-size text-center roboto-bold">
             Envia dinero a quien quieras en{" "}
             <span className="bg-text-mark-section-step ">3 simples pasos</span>
@@ -40,7 +40,7 @@ const SectionStep = () => {
                 </h3>
 
                 <div className="me-4">
-                  <p className="fs-13px text-height">
+                  <p className="fs-13px text-height font-size-nuwy-step">
                     Elije la moneda según el pais de tu receptor y escribe el
                     monto que quieras transferir
                   </p>
@@ -64,7 +64,7 @@ const SectionStep = () => {
                 </h3>
 
                 <div className="me-4">
-                  <p className="fs-13px text-height">
+                  <p className="fs-13px text-height font-size-nuwy-step">
                     Ingresa los datos de la persona que recibirá el dinero que
                     quieres enviar
                   </p>
@@ -86,7 +86,7 @@ const SectionStep = () => {
                 </h3>
 
                 <div className="me-4">
-                  <p className="fs-13px text-height ">
+                  <p className="fs-13px text-height font-size-nuwy-step ">
                     Sube el capture de la transferencia a Nuwy y espera a que
                     nuestros agentes validen la información que se te enviará a
                     tu correo electrónico

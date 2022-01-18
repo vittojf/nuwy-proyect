@@ -51,14 +51,15 @@ function FormsRemesas() {
      <img src="/svg/rowLeft.svg" alt="rowLeft" className="me-2"/> Volver
     </Link>
     <Card
-      className="card  card-remesas text-white w-50 ms-5 me-3"
+      className="card  card-remesas text-white w-50 ms-5 me-3 "
       classNameBody=" d-flex justify-content-center flex-wrap text-center align-content-center"
       >
-      <div className="mb-2">
-      <p className="m-0 mx-5 ">Enviarás:</p>
-        <span >
+      <div className="mb-2 ">
+      <p className="m-0 mx-5 font-size-nuwy-form">Enviarás:</p>
+        <span className="font-size-nuwy" >
           <img src="/svg/chile.svg" alt="" /> $ <NumberFormat
               value={dataSendMoney.emisor.value}
+              className="font-size-nuwy-form"
               displayType="text"
               thousandSeparator="."
               decimalSeparator=","
@@ -66,11 +67,12 @@ function FormsRemesas() {
         </span>
       </div>
       <div>
-      <p className="m-0  mx-5 ">Recibirás:</p>
-        <span> 
+      <p className="m-0  mx-5 font-size-nuwy-form">Recibirás:</p>
+        <span   className="font-size-nuwy-form"> 
           <img src={`/svg/${selectIcon(dataSendMoney.receptor.country)}`} alt="" /> $  <NumberFormat
               value={dataSendMoney.receptor.value}
               displayType="text"
+              className="font-size-nuwy-form"
               thousandSeparator="."
               decimalSeparator=","
             

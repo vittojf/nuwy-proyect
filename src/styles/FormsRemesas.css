@@ -6,14 +6,16 @@
     margin-top: 74px;
 }
 
+
+
 .card-remesas{
     max-width: max-content !important;
 }
 .card-remesas p,span{
-    font-size: 11px;
+    font-size: 15px;
 }
 .card-remesas p {
-    line-height: 13px;
+    line-height: 25px;
 }
 .card-remesas span{
     font-weight: 700;

@@ -70,8 +70,8 @@ setFullScreen(true)
           }
           
         </Modal.Body>
-        <Modal.Footer className="d-flex flex-nowrap justify-content-center">
-          <Link to="/sendMoney" className="btn btn-nuwy-modal"   state={ {data:props.datasend}}>
+        <Modal.Footer className="d-flex flex-nowrap justify-content-center ">
+          <Link to="/sendMoney" className="btn btn-nuwy-modal "   state={ {data:props.datasend}}>
 
             Aceptar y continuar
 
