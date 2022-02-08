@@ -2,6 +2,7 @@ import axios from 'axios';
 import React,{useState} from 'react';
 import { Spinner } from 'react-bootstrap';
 import TopNambedInput from '../TopNambedInput/TopNambedInput'
+import {toast, Toaster } from "react-hot-toast"; 
 function FormContact() {
 
   const [data, setData] = useState({
@@ -46,17 +47,30 @@ setRes(true)
         .post("https://nuwy-api-app.herokuapp.com/send-mail-contact", data)
         .then((res) => {
           setRes(false) 
-            alert("Mensaje Enviado");
-          
+          toast.success("Correo Enviado", {
+            position: "top-right",
+            reverseOrder: true,
+            style: {
+              marginTop: "10px",
+            },
+          })
+      
           
         }).catch(res=>{
          
           setRes(false)
-          alert('Mensaje Fallido')
+          toast.error("Ocurrio un Error", {
+            position: "top-right",
+            reverseOrder: true,
+            style: {
+              marginTop: "10px",
+            },
+          })
 
         })
 }        
      
+
     return ( <section className="my-5  text-start sectionContact " id="contacto">
 
         <h6 className="text-title-nuwy text-center mb-4">¿No encuentras tu respuesta? escríbenos</h6>
@@ -96,6 +110,16 @@ setRes(true)
 
 
 </button>
+<Toaster
+              gutter={2}
+              containerClassName="mt-5"
+              toastOptions={{
+                // Define default options
+                className: "",
+
+                duration: 1200,
+              }}
+            />
     </section> );
 }
 

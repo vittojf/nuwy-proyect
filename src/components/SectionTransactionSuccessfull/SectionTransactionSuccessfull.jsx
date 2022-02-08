@@ -1,17 +1,37 @@
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import FormContext from "../../Context/dataContext";
 import Navbars from "../Navbars/Navbars";
 import NumberFormat from "react-number-format";
 import SectionsNuwy from "../Sections/Sections";
 import FacturaPDF from "./PlantillaPDFSuccessFull";
+
 import "./sectionSuccessfull.css";
 function SectionTransactionSuccessfull() {
   const { dataBody, rate, dataSendMoney,formatData } = useContext(FormContext);
 
+
+
+  function getDateTime(date){
+if(date!==''){
+
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    let strTime = hours + ':' + minutes + ' ' + ampm;
+    return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+  }else{
+    return
+  }
+  }
+
   return (
+    dataBody.FechaTransaccion!==""?
     <>
       <Navbars />
       <SectionsNuwy
@@ -129,7 +149,12 @@ function SectionTransactionSuccessfull() {
                 <b>N° de cuenta</b>
                 <span>{dataBody?.DatosReceptor.nCuenta}</span>
               </div>
+              <div className="col w-100 d-flex justify-content-center mt-2 mb-3">
+                <b>Fecha transacción:</b>
+                <span className="ms-2">{getDateTime(dataBody?.FechaTransaccion)}</span>
+              </div>
             </div>
+     
           </div>
         </Card>
             </div>
@@ -147,7 +172,7 @@ function SectionTransactionSuccessfull() {
             </Link>
           </div>
           <div className="col">
-          <PDFDownloadLink  document={<FacturaPDF dataConvert={dataSendMoney} dataUser={dataBody} rate={rate}/>} fileName="ComprobanteNuwy.pdf">
+          <PDFDownloadLink  document={<FacturaPDF dataConvert={dataSendMoney} dataUser={dataBody} rate={rate} dateTransaccion={getDateTime(dataBody?.FechaTransaccion)}/> } fileName="ComprobanteNuwy.pdf">
           <button className="text-white btn btn-cancel-step mt-3 font-text-nwy">
               Descargar Comprobante
             </button>
@@ -156,7 +181,8 @@ function SectionTransactionSuccessfull() {
           </div>
         </div>
       </SectionsNuwy>
-    </>
+  
+    </>:<Navigate to="/"/>
   );
 }
 

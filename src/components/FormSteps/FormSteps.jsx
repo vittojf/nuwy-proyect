@@ -23,7 +23,7 @@ function FormStep({
   resImage,
   file,
   trigger}) {
-  const { dataBody, rate, dataSendMoney, setRes, validateRut } =
+  const { dataBody, rate, dataSendMoney, setRes, validateRut,setDataBody } =
     useContext(FormContext);
 //https://nuwy-api-app.herokuapp.com/send-mail
 //http://localhost:4000/
@@ -293,9 +293,10 @@ function FormStep({
                             {resImage ? (
                               <Link
                                 className={`btn btn-nuwy-steps  ${classButton}`}
-                                to="/successfullTransacction"
+                                to={`/successfullTransacction/${new Date().valueOf()}`}   
                                 disabled={true}
                                 onClick={() => {
+                                  setDataBody({...dataBody,FechaTransaccion:new Date()})
                                   sendMail(dataBody, dataSendMoney,rate)
                                 }}
                               >

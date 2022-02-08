@@ -12,7 +12,8 @@ import { useLocation } from "react-router-dom";
 const repo = new ApiConvertRepository()
 function FormConvert() {
   const [dropwdown, setDropwdown] = useState(false);
-
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [value, setValue] = useState(new Date());
   const [valueInput1, setValueInput1] = useState(1);
 const location = useLocation()
 const maxVal=500000;
@@ -28,7 +29,6 @@ const maxVal=500000;
     setData,
     setRate,
     rate,
-    buttonDisabled,
     formatData
   } = useContext(FormContext);
 
@@ -170,6 +170,47 @@ const maxVal=500000;
     }
   }, [res, setData, setDataSendMoney, setRate, setRes]);
 //console.log(location)
+
+
+useEffect(() => {
+  const interval = setInterval(
+    () => setValue(new Date()),
+    1000
+  );
+
+  return () => {
+    clearInterval(interval);
+  }
+}, []);
+
+useEffect(() => {
+if(value.toLocaleTimeString("es-CL",{
+  timeZone: "America/Santiago",
+  hour12: true, // false
+  hour: "numeric", // 2-digit
+  minute: "2-digit", // numeric
+  second: "2-digit" // numeric
+})>='9:00:00 a. m.')
+{
+  
+  setButtonDisabled(false)
+}
+if(value.toLocaleTimeString("es-CL",{
+  timeZone: "America/Santiago",
+  hour12: true, // false
+  hour: "numeric", // 2-digit
+  minute: "2-digit", // numeric
+  second: "2-digit" // numeric
+})>='6:00:00 p. m.'){
+  
+  setButtonDisabled(false)
+
+}
+
+}, [value]);
+
+
+
   useEffect(() => {
     if(location.state!==null){
 

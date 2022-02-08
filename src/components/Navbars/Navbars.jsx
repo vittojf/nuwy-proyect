@@ -11,7 +11,7 @@ const Navbars = () => {
     <>
       <Navbar
         variant="dark"
-        
+
         expand="lg"
         style={{ background: "#5163A3" }}
         fixed="top"
@@ -21,53 +21,59 @@ const Navbars = () => {
           <Navbar.Brand ><Link to="/" className="text-white">Nuwy</Link></Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            style={{borderStyle:'unset'}}
-                      onClick={() => setExpanded(expanded ? false : "expanded")}
+            style={{ borderStyle: 'unset' }}
+            onClick={() => setExpanded(expanded ? false : "expanded")}
           > <img src="/svg/bars.svg" alt="" /></Navbar.Toggle>
-          <Navbar.Collapse  id="basic-navbar-nav" className="text-start justify-content-end">
+          <Navbar.Collapse id="basic-navbar-nav" className="text-start justify-content-end">
             <Nav className="justify-content-end">
-            <Nav.Item>
-            <Link
-                className="nav-link me-link-nuwy"
-                to="/#card-section"
-                onClick={() => setExpanded(false)}
-              >
-                {" "}
-                Transferir
-              </Link>
-              </Nav.Item>
               <Nav.Item>
-              <Link
-                className="nav-link me-link-nuwy"
-                to="/sobre-nosotros"
-                onClick={() => setExpanded(false)}
-              >
-                {" "}
-                Sobre Nosotros
-              </Link>
+                <Link
+                  className="nav-link me-link-nuwy"
+                  to="/#card-section"
+                  onClick={() => setExpanded(false)}
+                >
+                  {" "}
+                  Transferir
+                </Link>
               </Nav.Item>
+              {
+/*
+                <Nav.Item>
+                <Link
+                  className="nav-link me-link-nuwy"
+                  to="/sobre-nosotros"
+                  onClick={() => setExpanded(false)}
+                >
+                  {" "}
+                  Sobre Nosotros
+                </Link>
+              </Nav.Item>
+              */}
               <Nav.Item>
-              <HashLink
-              className="nav-link me-link-nuwy"
-              to="/#stepsSection"
-              onClick={() => setExpanded(false)}
-              >
+                <HashLink
+                  className="nav-link me-link-nuwy"
+                  to="/#stepsSection"
+                  onClick={() => setExpanded(false)}
+                >
 
-             
-                {" "}
-               Como Funciona
-          
+
+                  {" "}
+                  Como Funciona
+
                 </HashLink>
               </Nav.Item>
-              <Nav.Item>
-              <Link
+              {
+/*
+                <Nav.Item>
+                <Link
                   className="nav-link me-link-nuwy"
                   to="/ayuda"
                   onClick={() => setExpanded(false)}
                 >
                   Ayuda
                 </Link>
-                </Nav.Item>
+              </Nav.Item>
+              */}
             </Nav>
           </Navbar.Collapse>
         </Container>

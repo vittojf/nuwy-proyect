@@ -1,4 +1,4 @@
-import React, { createContext, useState,useEffect } from "react";
+import React, { createContext, useState } from "react";
 import { validate } from "rut.js";
 const FormContext = createContext();
 function DataContext({ children }) {
@@ -17,6 +17,7 @@ function DataContext({ children }) {
       nCuenta: "",
     },
     DatosCaptura: {},
+    FechaTransaccion:""
   });
   const [dataSendMoney, setDataSendMoney] = useState({
     emisor: {
@@ -37,8 +38,6 @@ function DataContext({ children }) {
   const [data, setData] = useState([]);
   const [rate, setRate] = useState();
   const [res, setRes] = useState(false);
-const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [value, setValue] = useState(new Date());
  
 
   function formatData(){
@@ -57,6 +56,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
         nCuenta: "",
       },
       DatosCaptura: {},
+      FechaTransaccion:""
     })
     setRate(null)
 
@@ -64,43 +64,6 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
   }
 
 
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setValue(new Date()),
-      1000
-    );
- 
-    return () => {
-      clearInterval(interval);
-    }
-  }, []);
-
-useEffect(() => {
-  if(value.toLocaleTimeString("es-CL",{
-    timeZone: "America/Santiago",
-    hour12: true, // false
-    hour: "numeric", // 2-digit
-    minute: "2-digit", // numeric
-    second: "2-digit" // numeric
-  })>='9:00:00 a. m.')
-  {
-    
-    setButtonDisabled(false)
-  }
-  if(value.toLocaleTimeString("es-CL",{
-    timeZone: "America/Santiago",
-    hour12: true, // false
-    hour: "numeric", // 2-digit
-    minute: "2-digit", // numeric
-    second: "2-digit" // numeric
-  })>='6:00:00 p. m.'){
-    
-    setButtonDisabled(false)
-
-  }
-
-}, [value]);
 
 
 
@@ -121,7 +84,6 @@ useEffect(() => {
     rate,
     setRate,
     validateRut,
-    buttonDisabled,
     formatData
   };
   return <FormContext.Provider value={datas}>{children}</FormContext.Provider>;

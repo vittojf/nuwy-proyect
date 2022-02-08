@@ -30,26 +30,34 @@ setFullScreen(true)
           {
             fullScreen?<>
             <Navbars/>
-        <div className="d-flex justify-content-between  justify-content-lg-start align-items-end mt-2 mb-3" style={{height:'15%'}}>
-    <button className=" text-white ms-4 fs-5 btnReset btn-terminos d-flex align-items-center  " onClick={()=>setFullScreen(false)} >
+        <div className="h-100  container">
+
+<div style={{marginTop:'4rem'}}>
+
+            <div className="d-flex justify-content-between  justify-content-lg-start align-items-end mt-2 mb-3" style={{height:'15%'}}>
+              <button className=" text-white  fs-5 btnReset btn-terminos d-flex align-items-center  " onClick={()=>setFullScreen(false)} >
      <img src="/svg/rowColor.svg" alt="rowLeft" className="me-2"/>
     Volver
     </button>
-    </div>
+</div>
+    
+            </div>
             <SimpleBarReact
-                  style={{ maxHeight: "80%" }}
+                  style={{ maxHeight: "80%",padding:'0 0.5rem',width:'100%'  }}
                   scrollbarMaxSize="87"
                   forceVisible="y"
                   autoHide={true}
                   overflow-x="hidden"
                   
-                >
-            <div className="text-condition mx-3 me-4">
+                  >
+                  
+            <div className="text-condition container mx-auto ">
             <h5 className="fs-10 text-center my-4 text-condition-title">Términos y condiciones de uso de sitio web</h5>
       
             <TerminosCondiciones></TerminosCondiciones>
             </div>
             </SimpleBarReact>
+                  </div>
             </>
             
             :<>

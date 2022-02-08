@@ -72,13 +72,14 @@ function SectionFooter() {
               <p className="footer-link">Pasos para transferir</p>
             </HashLink>
           </div>
-
+{/*
+<>
           <div className="col mt-3 ">
             <h6>Empresas y equipo</h6>
             <Link
               to="/sobre-nosotros#"
-       
-            >
+              
+              >
               {" "}
               <p>Nosotros</p>
             </Link>
@@ -112,6 +113,8 @@ function SectionFooter() {
             <h6>Legal</h6>
             <p>Terminos y Condiciones</p>
           </div>
+              </>
+            */  }
         </div>
       </section>
 
