@@ -10,8 +10,8 @@ function CardForm() {
       <section className=" mt-100 mb-card cardNuwy" id="seccionTransferir" >
 
           <div className="text-white text-center mx-14 " id="card-section">
-              <h3 className="mb-19 roboto-bold title-size">Quidam alii sunt, et non est in nostra potestate. Quae</h3>
-              <p className="text-nuwy text-nuwy-size "> et non est Quidam alii sunt, et non est in nostra potestate. Quae omnia inpotestat</p>
+              <h3 className="mb-19 roboto-bold title-size">Envía dinero de forma rápida y eficiente</h3>
+              <p className="text-nuwy text-nuwy-size ">Sigue los pasos y envía dinero de forma segura</p>
           </div>
    
         
